@@ -92,7 +92,7 @@
 
 ## 만든 사람들
 
-| 이름  | 태그  | 담당  | Github 주소  | 블로그 주소 |
+| 이름  | 태그  | 담당  | Github<br>주소  | 블로그<br>주소 |
 | --- | --- | --- | --- | --- |
 | 노동균 | 팀장 | 손님AI, 뉴스, 프롤로그 씬, 게임 엔딩 씬, 데이터, Cheater, 애널리틱스  | [찾아가기](https://github.com/shehdrbs123) | [보러가기](https://blog.naver.com/shehdrbs123) |
 | 김정민 | 부팀장 | 인벤토리, 장식품 상점, 튜토리얼, 게임 오버 씬, 연습모드, 오브젝트 풀링, UIManager, UI디자인 | [찾아가기](https://github.com/j-miiin) | [보러가기](https://velog.io/@lazypotato) |
