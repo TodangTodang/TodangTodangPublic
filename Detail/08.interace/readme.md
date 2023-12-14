@@ -50,8 +50,12 @@
         if (ingredients.Count <= 0) return;
         if (player.Ingredient != null) return;
         if (currentProgress >= maxProgress) return;
+        if (ingredients[0].tag == "Trash") return;
     
         ++ currentProgress;
+    
+        if (interactionSound != "") soundManager.Play(interactionSound);
+        WorkingParticle();
         UpdateProgressBar();
     
         if (currentProgress == maxProgress)
@@ -61,19 +65,24 @@
         }
     }
     
+    
     public virtual void PickUp()
     {
         if (player.Ingredient != null) return;
         if (ingredients.Count <= 0) return;
     
         currentProgress = 0;
+        UpdateProgressBar();
     
-        ingredients[ingredients.Count - 1].transform.parent = player.foodPos;
-        ingredients[ingredients.Count - 1].transform.localPosition = Vector3.zero;
-        ingredients[ingredients.Count - 1].transform.localRotation = Quaternion.Euler(Vector3.zero);
+        soundManager.Play(Strings.Sounds.KITCHEN_PICK_UP);
+        SuccessParticle(false);
+        UpdateWarning(0);
+    
+        SetObejctsParent(ingredients[ingredients.Count - 1], player.foodPos);
         player.Ingredient = ingredients[ingredients.Count - 1];
         ingredients.RemoveAt(ingredients.Count - 1);
     }
+    
     
     public virtual void PutDown()
     {
@@ -86,10 +95,10 @@
             UpdateProgressBar();
         }
     
+        soundManager.Play(Strings.Sounds.KITCHEN_PUT_DOWN);
+    
         ingredients.Add(player.Ingredient);
-        ingredients[ingredients.Count - 1].transform.position = foodPos[ingredients.Count - 1].position;
-        ingredients[ingredients.Count - 1].transform.parent = foodPos[ingredients.Count - 1];
-        ingredients[ingredients.Count - 1].transform.localRotation = Quaternion.Euler(Vector3.zero);
+        SetObejctsParent(ingredients[ingredients.Count - 1], foodPos[ingredients.Count - 1]);
         player.Ingredient = null;
     }
     ```
@@ -102,14 +111,13 @@
         protected override void Initialize()
         {
             GetUtensilData();
-    
-            base.Initialize();
-    
             CanInteractWithPlayer = true;
             IsPlaceable = true;
-    
             interactionPos = foodPos[0];
-            interactionSound = "CounterTop2";
+        
+            interactionSound = Strings.Sounds.KITCHEN_COUNTERTOP;
+        
+            base.Initialize();
         }
     }
     ```
@@ -122,28 +130,27 @@
         protected override void Initialize()
         {
             base.Initialize();
-    
             CanInteractWithPlayer = true;
-    
+        
             interactionSound = "";
-            successSound = "TeaPotAndWaterPurifier";
+            successSound = Strings.Sounds.KITCHEN_WATER;
         }
-    
+        
         public override void Interaction()
         {
             if (player.Ingredient == null) return;
             if (player.Ingredient != null)
             {
                 ingredients.Add(player.Ingredient);
-    
+        
             }
             player.Ingredient = null;
             interactionPos = player.foodPos;
-    
+        
             base.Interaction();
         }
-    
-        protected override void MakeResult(Enums.Result result)
+        
+        protected override void MakeResult(GameObject result)
         {
             base.MakeResult(result);
             currentProgress = 0;
