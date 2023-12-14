@@ -48,8 +48,8 @@
 
 |메서드|기능|
 |:---:|:---:|
-|[Instantiate](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/ResourceManager.cs#L30-L65)|Resources 폴더에서 해당 Prefab을 Load한다.<br>해당 오브젝트에 Poolable 컴포넌트가 있다면 PoolManager에게 오브젝트 Pop을 요청한다.|
-|[Destroy](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/ResourceManager.cs#L67-L80)|게임 오브젝트를 Destroy한다.<br>해당 오브젝트가 Poolable 컴포넌트를 가지고 있다면 PoolManager에게 오브젝트 Push를 요청한다.|
+|[Instantiate](https://github.com/TodangTodang/TodangTodangPublic/blob/67cd97076bd3a93284b40d230c277ccbe69850f4/Scripts/Manager/ResourceManager.cs#L30-L63)|Resources 폴더에서 해당 Prefab을 Load한다.<br>해당 오브젝트에 Poolable 컴포넌트가 있다면 PoolManager에게 오브젝트 Pop을 요청한다.|
+|[Destroy](https://github.com/TodangTodang/TodangTodangPublic/blob/67cd97076bd3a93284b40d230c277ccbe69850f4/Scripts/Manager/ResourceManager.cs#L65-L78)|게임 오브젝트를 Destroy한다.<br>해당 오브젝트가 Poolable 컴포넌트를 가지고 있다면 PoolManager에게 오브젝트 Push를 요청한다.|
 
 <br>
 
@@ -57,10 +57,10 @@
 
 |메서드|기능|
 |:---:|:---:|
-|[CreatePool](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/PoolManager.cs#L9-L18)|새로운 오브젝트 풀을 생성한다.|
-|[Push](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/PoolManager.cs#L20-L33)|오브젝트 풀 Dictionary에 요청 받은 오브젝트의 풀이 있다면 해당 풀에 오브젝트를 넣는다.<br>풀이 존재하지 않는 오브젝트일 경우 Destroy한다.|
-|[Pop](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/PoolManager.cs#L35-L43)|오브젝트 풀 Dictionary에 요청 받은 오브젝트를 Pop하여 반환한다.<br>풀이 존재하지 않는 오브젝트라면 해당 오브젝트의 풀을 새로 생성한다.|
-|[Clear](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/PoolManager.cs#L45-L48)|현재 관리 하는 오브젝트 풀 Dictionary를 Clear한다.<br>Scene이 변경되었을 때 Destroy 되어 접근할 수 없는 오브젝트들에 대한 참조를 방지하기 위해 사용한다.|
+|[CreatePool](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/PoolManager.cs#L9-L18)|새로운 오브젝트 풀을 생성한다.|
+|[Push](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/PoolManager.cs#L20-L33)|오브젝트 풀 Dictionary에 요청 받은 오브젝트의 풀이 있다면 해당 풀에 오브젝트를 넣는다.<br>풀이 존재하지 않는 오브젝트일 경우 Destroy한다.|
+|[Pop](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/PoolManager.cs#L35-L43)|오브젝트 풀 Dictionary에 요청 받은 오브젝트를 Pop하여 반환한다.<br>풀이 존재하지 않는 오브젝트라면 해당 오브젝트의 풀을 새로 생성한다.|
+|[Clear](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/PoolManager.cs#L45-L48)|현재 관리 하는 오브젝트 풀 Dictionary를 Clear한다.<br>Scene이 변경되었을 때 Destroy 되어 접근할 수 없는 오브젝트들에 대한 참조를 방지하기 위해 사용한다.|
 
 <br>
 
@@ -68,10 +68,10 @@
 
 |메서드|기능|
 |:---:|:---:|
-|[Init](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/Pool.cs#L12-L22)|처음 풀이 생성되었을 때 해당 풀에서 관리하는 오브젝트, 풀의 루트 Transform을 설정한다.<br>기본적으로 3개의 오브젝트를 생성한다.|
-|[Create](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/Pool.cs#L24-L31)|Init 메서드에서 설정한 해당 풀의 오브젝트를 생성한다.|
-|[Push](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/Pool.cs#L33-L43)|풀에 오브젝트를 넣는다.<br>풀의 루트를 Parent로 설정한 뒤, 해당 오브젝트를 비활성화하고 큐에 넣는다.|
-|[Pop](https://github.com/j-miiin/TodangTodangCodes/blob/8743167cc63b3244252e8718c75dec9b9c05d51e/Object%20Pooling/Pool.cs#L45-L64)|풀에서 오브젝트를 꺼낸다.<br>지정된 Parent가 있다면 해당 Transform을 Parent로 설정한 뒤 오브젝트를 활성화한다.<br>지정된 Parent가 없을 경우 현재 풀의 루트를 Parent로 설정한다.<br>큐에 오브젝트가 있다면 해당 오브젝트를 꺼내고, 없다면 Create 메서드로 생성한다.|
+|[Init](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/ObjectPooling/Pool.cs#L12-L22)|처음 풀이 생성되었을 때 해당 풀에서 관리하는 오브젝트, 풀의 루트 Transform을 설정한다.<br>기본적으로 3개의 오브젝트를 생성한다.|
+|[Create](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/ObjectPooling/Pool.cs#L24-L31)|Init 메서드에서 설정한 해당 풀의 오브젝트를 생성한다.|
+|[Push](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/ObjectPooling/Pool.cs#L33-L43)|풀에 오브젝트를 넣는다.<br>풀의 루트를 Parent로 설정한 뒤, 해당 오브젝트를 비활성화하고 큐에 넣는다.|
+|[Pop](https://github.com/TodangTodang/TodangTodangPublic/blob/2b5e16ffc5b48cefbdae98689b16329ac1593c9a/Scripts/Manager/ObjectPooling/Pool.cs#L45-L64)|풀에서 오브젝트를 꺼낸다.<br>지정된 Parent가 있다면 해당 Transform을 Parent로 설정한 뒤 오브젝트를 활성화한다.<br>지정된 Parent가 없을 경우 현재 풀의 루트를 Parent로 설정한다.<br>큐에 오브젝트가 있다면 해당 오브젝트를 꺼내고, 없다면 Create 메서드로 생성한다.|
 
 <br>
 
