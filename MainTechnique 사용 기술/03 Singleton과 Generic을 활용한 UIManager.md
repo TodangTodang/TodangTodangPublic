@@ -100,6 +100,6 @@ UIManager.Instance.ShowPopup<UI_SliderPopup>(
 <br><br>
 
 
-#### [🐰 상세코드 보기 🐰]()
+#### [🐰 상세코드 보기 🐰](https://github.com/j-miiin/TodangTodangCodes/tree/main/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC)
 
 #### [🌙 Main README로 돌아가기 🌙](/README.md)
