@@ -11,7 +11,7 @@ public class PlayerIdleState : PlayerStayState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.IdleParameterHash);
     }
 
 
@@ -34,7 +34,7 @@ public class PlayerIdleState : PlayerStayState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.IdleParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.IdleParameterHash);
     }
 
     private void OnMove()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using static Strings;
@@ -33,6 +34,11 @@ public class UI_StartScene : MonoBehaviour
         _exitButton.onClick.AddListener(OnClickExitButton);
     }
 
+    private void Start()
+    {
+        Init();
+    }
+
     private void Init()
     {
         _isInit = true;
@@ -50,9 +56,14 @@ public class UI_StartScene : MonoBehaviour
     {
         if (!_isInit) Init();
 
-        UI_GameSettings uiGameSettings = _uiManager.GetUIComponent<UI_GameSettings>();
-        Debug.Assert(uiGameSettings != null, "Null Exception : UI_GameSettings");
-        uiGameSettings.OpenUI(); 
+        // 모바일
+        // UI_GameSettings uiGameSettings = _uiManager.GetUIComponent<UI_GameSettings>();
+        // Debug.Assert(uiGameSettings != null, "Null Exception : UI_GameSettings");
+        // uiGameSettings.OpenUI();
+
+        UI_GameSettingsPC uiGameSettingsPC = _uiManager.GetUIComponent<UI_GameSettingsPC>();
+        Debug.Assert(uiGameSettingsPC != null, "Null Exception : UI_GameSettingsPC");
+        uiGameSettingsPC.OpenUI();
     }
 
     public void OnClickStartButton()

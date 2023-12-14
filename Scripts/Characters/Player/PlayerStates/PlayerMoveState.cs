@@ -8,7 +8,7 @@ public class PlayerMoveState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.MoveParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.MoveParameterHash);
         stateMachine.IsWalking = true;
         stateMachine.Player.ActivateParticle(true);
     }
@@ -21,7 +21,7 @@ public class PlayerMoveState : PlayerBaseState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.MoveParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.MoveParameterHash);
     }
 
 }

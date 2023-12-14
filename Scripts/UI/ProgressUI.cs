@@ -5,7 +5,7 @@ public enum CustomerEmotionType
 {
     Perfect, Great,SoSo,Angry
 }
-public class ProgressUI : MonoBehaviour
+public class UI_ProgressUI : MonoBehaviour
 {
     [SerializeField] private Slider ProgressSlider;
     [SerializeField] private Image handle;

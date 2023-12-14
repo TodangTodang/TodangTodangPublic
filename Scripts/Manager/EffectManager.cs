@@ -21,7 +21,8 @@ public class EffectManager : Singleton<EffectManager>
 
     public void EraseAllData()
     {
-        _effectsData.EraseAllData();
+        if(isInit)
+            _effectsData.EraseAllData();
     }
 
     public void InitData()

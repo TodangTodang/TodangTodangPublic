@@ -62,7 +62,7 @@ public class UI_ResultPanel : UI_Base
              }));
     }
 
-    public void Init(ref PlayData data, int previousStar, int currentStar, int netIncome)
+    public void Init(ref SalesData data, int previousStar, int currentStar, int netIncome)
     {
         if (_gameManager == null) _gameManager = GameManager.Instance;
         if (_resourceManager == null) _resourceManager = ResourceManager.Instance;

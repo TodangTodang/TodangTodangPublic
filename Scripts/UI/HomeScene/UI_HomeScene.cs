@@ -24,7 +24,9 @@ public class UI_HomeScene : UI_Base
     private UI_Inventory _uiInventory;
     private UI_DecoStore _uiDecoStore;
     private UI_Market _uiMarket;
-    private UI_GameSettings _uiGameSettings;
+    // 모바일 
+    //private UI_GameSettings _uiGameSettings;
+    private UI_GameSettingsPC _uiGameSettingsPC;
 
     private GameManager _gameManager;
     private UIManager _uiManager;
@@ -212,8 +214,12 @@ public class UI_HomeScene : UI_Base
 
     private void OpenSettings()
     {
-        if (_uiManager.TryGetUIComponent<UI_GameSettings>(out _uiGameSettings))
-             _uiGameSettings.OpenUI();
+        // 모바일
+        //if (_uiManager.TryGetUIComponent<UI_GameSettings>(out _uiGameSettings))
+        //    _uiGameSettings.OpenUI();
+
+        if (_uiManager.TryGetUIComponent<UI_GameSettingsPC>(out _uiGameSettingsPC))
+            _uiGameSettingsPC.OpenUI();
     }
 
     private void OnDestroy()

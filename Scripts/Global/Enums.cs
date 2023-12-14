@@ -34,7 +34,7 @@ public class Enums
     }
 
     // HomeScene Character
-    public enum Bunny00State
+    public enum NPCBunny1
     {
         WalkingToFridge,
         SearchingFridge,

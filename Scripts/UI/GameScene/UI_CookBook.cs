@@ -16,7 +16,7 @@ public class UI_CookBook : UI_Base
     private CookBookSO _teaCookBook;
 
     private PlayerData _playerData;
-    private List<IngredientInfoSO> _unlockedRecipes;
+    private List<ResultInfoSO> _unlockedRecipes;
     private List<CookBookSO> _recipes;
 
     private UI_CookStepUpdater _cookStepUpdater;
@@ -96,7 +96,7 @@ public class UI_CookBook : UI_Base
         {
             GameObject slot = _resourceManager.Instantiate(Strings.Prefabs.UI_RECIPE_SLOT, _menuSlotArea);
             slot.transform.localScale = Vector3.one;
-            bool _isNew = _unlockedRecipes.Contains(recipe.Result);
+            bool _isNew = _unlockedRecipes.Contains(recipe.Result as ResultInfoSO);
             UI_RecipeSlot uiRecipeSlot;
             if (slot.TryGetComponent<UI_RecipeSlot>(out uiRecipeSlot))
             {

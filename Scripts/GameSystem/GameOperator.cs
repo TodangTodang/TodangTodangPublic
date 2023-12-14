@@ -27,7 +27,7 @@ public class GameOperator : MonoBehaviour
     private CustomerGenerator _customerGenerator;
     private GameSceneHUDController _gameSceneHUDController;
 
-    private PlayData _playData;
+    private SalesData _salesData;
     private GameManager _gameManager;
     private EffectManager _effectManager;
     private UIManager _uiManager;
@@ -50,7 +50,7 @@ public class GameOperator : MonoBehaviour
 
     private IEnumerator SpendTime()
     {
-        while (_todayTime > _currentTime && _playData.TotalCustomerCount > _currentExitedCustomerCount)
+        while (_todayTime > _currentTime && _salesData.TotalCustomerCount > _currentExitedCustomerCount)
         {
             _currentTime += Time.deltaTime;
             float timeRate = GetTime();
@@ -158,19 +158,19 @@ public class GameOperator : MonoBehaviour
         _playerData = _gameManager.GetPlayerData();
         Debug.Assert(_playerData != null, $"_playerData {Strings.DebugLog.INIT_PROBLEM}");
 
-        _playData = new PlayData();
-        _playData.SelledFoods = new Dictionary<IngredientInfoSO, int>();
-        _playData.ExpiredFoods = new Dictionary<IngredientInfoSO, int>();
+        _salesData = new SalesData();
+        _salesData.SelledFoods = new Dictionary<IngredientInfoSO, int>();
+        _salesData.ExpiredFoods = new Dictionary<IngredientInfoSO, int>();
         if (_enableManualCustomerSpawn && _customCustomerCount > 0)
         {
-            _playData.TotalCustomerCount = _customCustomerCount;
+            _salesData.TotalCustomerCount = _customCustomerCount;
         }
         else
         {
-            _playData.TotalCustomerCount = GetCustomerCount();
+            _salesData.TotalCustomerCount = GetCustomerCount();
         }
 
-        Debug.Log($"오늘 손님 : {_playData.TotalCustomerCount}");
+        Debug.Log($"오늘 손님 : {_salesData.TotalCustomerCount}");
    
     }
 
@@ -192,10 +192,10 @@ public class GameOperator : MonoBehaviour
         _gameSceneHUDController.SetEarnMoney(0);
         _gameSceneHUDController.ChangeTime(0);
         
-        _todayTime = _playData.TotalCustomerCount * dataSo.BaseEndurance * _totalTimeRate;
+        _todayTime = _salesData.TotalCustomerCount * dataSo.BaseEndurance * _totalTimeRate;
         Debug.Log($"{_todayTime}초의 하루입니다");
          
-        _gameSceneHUDController.SetLeftCustomerCount(_playData.TotalCustomerCount, true);
+        _gameSceneHUDController.SetLeftCustomerCount(_salesData.TotalCustomerCount, true);
     }
 
     private void OnBoughtCheck(CustomerEmotionType satisfy,List<IngredientInfoSO> orderedFood, int totalEarn)
@@ -208,16 +208,16 @@ public class GameOperator : MonoBehaviour
         switch (satisfy)
         {
             case CustomerEmotionType.Perfect :
-                ++_playData.PerfectCustomerCount;
+                ++_salesData.PerfectCustomerCount;
                 break;
             case CustomerEmotionType.Great :
-                ++_playData.GreatCustomerCount;
+                ++_salesData.GreatCustomerCount;
                 break;
             case CustomerEmotionType.SoSo :
-                ++_playData.SoSoCustomerCount;
+                ++_salesData.SoSoCustomerCount;
                 break;
             case CustomerEmotionType.Angry :
-                ++_playData.AngryCustomerCount;
+                ++_salesData.AngryCustomerCount;
                 break;
         }
 
@@ -225,20 +225,20 @@ public class GameOperator : MonoBehaviour
         foreach (var food in orderedFood)
         {
             Debug.Log(food.Name);
-            if (_playData.SelledFoods.TryGetValue(food, out int value))
-                _playData.SelledFoods[food] = value + 1;
+            if (_salesData.SelledFoods.TryGetValue(food, out int value))
+                _salesData.SelledFoods[food] = value + 1;
             else
-                _playData.SelledFoods[food] = 1;
+                _salesData.SelledFoods[food] = 1;
         }
 
-        _playData.EarnMoney += totalEarn;
+        _salesData.EarnMoney += totalEarn;
 
-        _gameSceneHUDController.SetEarnMoney(_playData.EarnMoney);
+        _gameSceneHUDController.SetEarnMoney(_salesData.EarnMoney);
         
-        Debug.Log($"완전 만족 수 {_playData.PerfectCustomerCount}");
-        Debug.Log($"적당히 만족 수 {_playData.GreatCustomerCount}");
-        Debug.Log($"만족 수 {_playData.SoSoCustomerCount}");
-        Debug.Log($"불만족 수 {_playData.AngryCustomerCount}");
+        Debug.Log($"완전 만족 수 {_salesData.PerfectCustomerCount}");
+        Debug.Log($"적당히 만족 수 {_salesData.GreatCustomerCount}");
+        Debug.Log($"만족 수 {_salesData.SoSoCustomerCount}");
+        Debug.Log($"불만족 수 {_salesData.AngryCustomerCount}");
     }
 
     private float GetTime()
@@ -248,10 +248,10 @@ public class GameOperator : MonoBehaviour
 
     private void OnCustomerIn()
     {
-        ++_playData.EnterCustomerCount;
-        _gameSceneHUDController.SetLeftCustomerCount(_playData.TotalCustomerCount-_playData.EnterCustomerCount);
-        Debug.Log(_playData.EnterCustomerCount);
-        if (_playData.TotalCustomerCount <= _playData.EnterCustomerCount)
+        ++_salesData.EnterCustomerCount;
+        _gameSceneHUDController.SetLeftCustomerCount(_salesData.TotalCustomerCount-_salesData.EnterCustomerCount);
+        Debug.Log(_salesData.EnterCustomerCount);
+        if (_salesData.TotalCustomerCount <= _salesData.EnterCustomerCount)
         {
             _customerGenerator.StopSpawn();
         }
@@ -279,7 +279,7 @@ public class GameOperator : MonoBehaviour
         ResultPanelController resultPanelController = result.GetComponent<ResultPanelController>();
         Debug.Assert(resultPanelController, "resultPanelController는 등록되지 않은 컴포넌트 입니다.");
 
-        resultPanelController.Init(ref _playData);
+        resultPanelController.Init(ref _salesData);
         result.OpenUI(false);
         result.FadeBackground();
 
@@ -300,7 +300,7 @@ public class GameOperator : MonoBehaviour
     private void OnCustomerExit()
     {
         ++_currentExitedCustomerCount;
-        Debug.Log($"잘가 {_currentExitedCustomerCount} / {_playData.TotalCustomerCount}");
+        Debug.Log($"잘가 {_currentExitedCustomerCount} / {_salesData.TotalCustomerCount}");
         // if (_currentExitedCustomerCount == _playData.TotalCustomerCount)
         // {
         //     FinishGame();

@@ -11,13 +11,13 @@ public class PlayerHoldAndWalkState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.HoldAndWalkParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.HoldAndWalkParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.HoldAndWalkParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.HoldAndWalkParameterHash);
     }
 
     public override void Update()

@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static Strings;
 
 public class GameSceneUIInputController
 {
@@ -9,11 +10,14 @@ public class GameSceneUIInputController
     private SceneManagerEx _sceneManager;
 
     private UI_PausePanel _pausePanel;
-    private UI_GameSettings _gameSettings;
     private UI_CookBook _cookBook;
     private UI_ResultPanel _resultPanel;
     private UI_IngredientBox _ingredientBox;
     private UI_StoreClosed _storeClosed;
+
+    // 모바일
+    // private UI_GameSettings _gameSettings;
+     private UI_GameSettingsPC _gameSettings;
 
     public GameSceneUIInputController(PlayerInput input)
     {
@@ -31,15 +35,27 @@ public class GameSceneUIInputController
         Debug.Assert(_sceneManager != null, "Null Exception : SceneManager");
 
         _pausePanel = _uiManager.GetUIComponent<UI_PausePanel>();
-        _gameSettings = _uiManager.GetComponent<UI_GameSettings>();
         _cookBook = _uiManager.GetUIComponent<UI_CookBook>();
         _resultPanel = _uiManager.GetUIComponent<UI_ResultPanel>();
         _storeClosed = _uiManager.GetUIComponent<UI_StoreClosed>();
+        _gameSettings = _uiManager.GetUIComponent<UI_GameSettingsPC>();
+
+        // 모바일 
+        //_gameSettings = _uiManager.GetComponent<UI_GameSettings>();
 
         if (_sceneManager.CurrentSceneType == Scenes.PracticeModeScene)
             _ingredientBox = _uiManager.GetUIComponent<UI_IngredientBoxPractice>();
         else
             _ingredientBox = _uiManager.GetUIComponent<UI_IngredientBox>();
+
+        #region Ensure Deactivating UI
+        _pausePanel.gameObject.SetActive(false);
+        _cookBook.gameObject.SetActive(false);
+        _resultPanel.gameObject.SetActive(false);
+        _storeClosed.gameObject.SetActive(false);
+        _ingredientBox.gameObject.SetActive(false);
+        _gameSettings.gameObject.SetActive(false);
+        #endregion
     }
 
     private void AddCallbacks()
@@ -59,19 +75,23 @@ public class GameSceneUIInputController
 
         _input.GameActions.Pause.performed += TogglePausePanel;
         _input.GameActions.CookBook.performed += ToggleCookBook;
-
-        #region Ensure Deactivating UI
-        _pausePanel.gameObject.SetActive(false);
-        _cookBook.gameObject.SetActive(false);
-        _resultPanel.gameObject.SetActive(false);
-        _storeClosed.gameObject.SetActive(false);
-        _ingredientBox.gameObject.SetActive(false);
-        #endregion
     }
 
     private void TogglePausePanel(InputAction.CallbackContext context)
     {
-        if (_pausePanel.gameObject.activeSelf)
+        UI_Base currentUI = _uiManager.GetCurrentUI();
+
+        if (currentUI is UI_Popup)
+        {
+            (currentUI as UI_Popup).ClosePopup(Enums.PopupButtonType.Cancel);
+        }
+        else if (_gameSettings.gameObject.activeSelf)
+        {
+            //모바일
+            //_gameSettings.OnClosedButton();
+            _gameSettings.OnClosedButton();
+        }
+        else if (_pausePanel.gameObject.activeSelf)
         {
             _pausePanel.CloseUI();
         }

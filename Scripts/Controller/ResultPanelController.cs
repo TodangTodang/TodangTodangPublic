@@ -4,7 +4,7 @@ using static Enums;
 
 public class ResultPanelController : MonoBehaviour
 {
-    private PlayData _playData;
+    private SalesData _salesData;
 
     private DataManager _dataManager;
     private GameManager _gameManager;
@@ -18,7 +18,7 @@ public class ResultPanelController : MonoBehaviour
 
     public PlayerEndingState endingState = PlayerEndingState.ContinuePlaying;
 
-    public void Init(ref PlayData data)
+    public void Init(ref SalesData data)
     {
         if (_dataManager == null) _dataManager = DataManager.Instance;
         if (_gameManager == null) _gameManager = GameManager.Instance;
@@ -29,14 +29,14 @@ public class ResultPanelController : MonoBehaviour
         Debug.Assert(_playerData != null, "Null Exception : PlayerData");
         Debug.Assert(_resultPanel != null, "Null Exception : _resultPanel");
 
-        _playData = data;
+        _salesData = data;
 
         _resultPanel.OnSelectScene += HandleGameStatus;
 
         UpdatePlayData();
         UpdatePlayerStar();
 
-        _resultPanel.Init(ref _playData, _previousStar, _currentStar, _netIncome);
+        _resultPanel.Init(ref _salesData, _previousStar, _currentStar, _netIncome);
 
         CheckGameStatus();
 
@@ -64,19 +64,19 @@ public class ResultPanelController : MonoBehaviour
         {
             foreach (IngredientInfoData expiredFood in expiredList)
             {
-                _playData.ExpiredFoods.Add(expiredFood.DefaultData, expiredFood.Quantity);
+                _salesData.ExpiredFoods.Add(expiredFood.DefaultData, expiredFood.Quantity);
                 totoalDisposeCount += expiredFood.Quantity;
                 Debug.Log($"{expiredFood.DefaultData.Name},{expiredFood.Quantity}");
             }
         }
 
-        _playData.TotalDisposeCount = totoalDisposeCount;
+        _salesData.TotalDisposeCount = totoalDisposeCount;
         totalDisposeCost = totoalDisposeCount * Numbers.FIXED_DISPOALCOST; 
-         _netIncome = _playData.EarnMoney - totalDisposeCost;
+         _netIncome = _salesData.EarnMoney - totalDisposeCost;
         _playerData.UpdateMoney(_netIncome);
 
         CheckNeedHelp();
-        _playData.RestMoney = _playerData.Money;
+        _salesData.RestMoney = _playerData.Money;
     }
 
     private void CheckNeedHelp()
@@ -87,8 +87,8 @@ public class ResultPanelController : MonoBehaviour
     private void CalculateRatingRatio()
     {
         int star = 0;
-        int totalCustomers = _playData.TotalCustomerCount;
-        int satisfiedCustomers = _playData.PerfectCustomerCount + _playData.GreatCustomerCount + _playData.SoSoCustomerCount;
+        int totalCustomers = _salesData.TotalCustomerCount;
+        int satisfiedCustomers = _salesData.PerfectCustomerCount + _salesData.GreatCustomerCount + _salesData.SoSoCustomerCount;
 
         int satisfactionRaio = (int)((double)satisfiedCustomers / totalCustomers * 100);
 

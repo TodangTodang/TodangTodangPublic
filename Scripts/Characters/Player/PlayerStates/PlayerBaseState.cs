@@ -52,7 +52,7 @@ public class PlayerBaseState : IState
         
         float rotationSpeed = 5.0f;
         Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-        Quaternion newRotation = Quaternion.Slerp(stateMachine.Player.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
+        Quaternion newRotation = Quaternion.Slerp(stateMachine.Player.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime*1.5f);
         
         rigid.MoveRotation(newRotation);
         rigid.MovePosition(targetPosition);

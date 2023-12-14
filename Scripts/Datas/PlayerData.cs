@@ -69,14 +69,14 @@ public class PlayerData : Savable
 
     private Inventory inventory;
     
-    private List<IngredientInfoSO> unlockedRecipes; // ���� ���
+    private List<ResultInfoSO> unlockedRecipes;
 
     public event Action PlayerDataChange;
 
     public PlayerData()
     {
         inventory = new Inventory();
-        unlockedRecipes = new List<IngredientInfoSO>();
+        unlockedRecipes = new List<ResultInfoSO>();
     }
 
     public override void Init(string json, Param saveParam)
@@ -92,6 +92,11 @@ public class PlayerData : Savable
         isNeedHelp = playerSaveData.isNeedHelp;
         IsCompleteUpgradeTutorial = playerSaveData.IsCompleteUpgradeTutorial;
         inventory = new Inventory(ref playerSaveData);
+
+        List<string> NewUnlockedList = playerSaveData.NewUnLockedRecipeList;
+        unlockedRecipes = new List<ResultInfoSO>();
+        SOCheckUtil.StringToSO<ResultInfoSO>(NewUnlockedList,unlockedRecipes);
+        
     }
 
     public override string GetJsonData()
@@ -112,11 +117,20 @@ public class PlayerData : Savable
         playerSaveData.KitchenUtensilInfoDatas = GetInventory<KitchenUtensilInfoData>();
         
         List<StoreDecorationInfoSO> decoList = GetInventory<StoreDecorationInfoSO>();
-        playerSaveData.StoreDecorationDatas = new List<string>();
+        playerSaveData.StoreDecorationDatas = new List<string>(decoList.Count);
         for (int i = 0; i < decoList.Count; i++)
         {
             playerSaveData.StoreDecorationDatas.Add(decoList[i].name);            
         }
+        
+        List<string> NewUnlockedRecipeStrList = new List<string>(unlockedRecipes.Count);
+        
+        for (int i = 0; i < unlockedRecipes.Count; i++)
+        {
+            NewUnlockedRecipeStrList.Add(unlockedRecipes[i].name);
+        }
+
+        playerSaveData.NewUnLockedRecipeList = NewUnlockedRecipeStrList;
         
         string jsonData = JsonUtility.ToJson(playerSaveData);
         
@@ -250,15 +264,16 @@ public class PlayerData : Savable
         UpdateMoney(-data.Price);
     }
 
-    public List<IngredientInfoSO> GetUnlockedRecipe()
+    public List<ResultInfoSO> GetUnlockedRecipe()
     {
-        if (unlockedRecipes == null) unlockedRecipes = new List<IngredientInfoSO>();    //TODO: ������ ���� �� ����
+        if (unlockedRecipes == null) unlockedRecipes = new List<ResultInfoSO>();    //TODO: ������ ���� �� ����
         return unlockedRecipes;
     }
 
     private void AddUnlockedRecipe(int id)
     {
-        if (unlockedRecipes == null) unlockedRecipes = new List<IngredientInfoSO>();    //TODO: ������ ���� �� ����
+        if (unlockedRecipes == null) unlockedRecipes = new List<ResultInfoSO>();    //TODO: ������ ���� �� ����
+
 
         if (id < 100)
         {
@@ -267,7 +282,7 @@ public class PlayerData : Savable
                 if (inventory.RecipeInfoDatas[i].DefaultData.ID == id)
                 {
                     if (inventory.RecipeInfoDatas[i].Level == 1)
-                        unlockedRecipes.Add(inventory.RecipeInfoDatas[i].DefaultData.ResultSO[0]);
+                        unlockedRecipes.Add(inventory.RecipeInfoDatas[i].DefaultData.ResultSO[0] as ResultInfoSO);
                 }
             }
         }
@@ -285,14 +300,14 @@ public class PlayerData : Savable
             if (teaDatas.Count == 1)
             {
                 IngredientInfoSO greenTea = inventory.RecipeInfoDatas.Find(tea => tea.DefaultData.ID == 100).DefaultData.ResultSO[0];
-                unlockedRecipes.Add(greenTea);
+                unlockedRecipes.Add(greenTea as ResultInfoSO);
             }
         }
     }
 
-    public void RemoveUnlockedRecipe(IngredientInfoSO ingredient)
+    public void RemoveUnlockedRecipe(ResultInfoSO ingredient)
     {
-        if (unlockedRecipes == null) unlockedRecipes = new List<IngredientInfoSO>();    //TODO: ������ ���� �� ����
+        if (unlockedRecipes == null) unlockedRecipes = new List<ResultInfoSO>();    //TODO: ������ ���� �� ����
 
         unlockedRecipes.Remove(ingredient);
     }
@@ -311,6 +326,10 @@ public class PlayerData : Savable
         Date = clone.Date;
 
         inventory = new Inventory(clone.inventory);
+        DataManager dataManager = DataManager.Instance;
+        
+        DebugUtil.AssertNullException(dataManager,nameof(dataManager));
+        dataManager.CancelRegistSaveData(this);
     }
     
     public Inventory GetInventory()

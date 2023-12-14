@@ -11,7 +11,7 @@ public class PlayerWalkState : PlayerMoveState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.WalkParameterHash);
     }
 
     public override void Start()
@@ -32,7 +32,7 @@ public class PlayerWalkState : PlayerMoveState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.WalkParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.WalkParameterHash);
     }
 
     private void OnStay()

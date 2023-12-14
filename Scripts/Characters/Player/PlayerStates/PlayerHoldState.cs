@@ -11,13 +11,13 @@ public class PlayerHoldState : PlayerStayState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.HoldParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.HoldParameterHash);
     }
 
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.HoldParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.HoldParameterHash);
     }
 
     public override void Update()

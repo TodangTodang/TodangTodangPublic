@@ -1,10 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class Bunny00Controller : MonoBehaviour
+public class NPCBunny1 : MonoBehaviour
 {
     private Animator _animator;
-    private Enums.Bunny00State _currentState = Enums.Bunny00State.WalkingToFridge;
+    private Enums.NPCBunny1 _currentState = Enums.NPCBunny1.WalkingToFridge;
 
     public Transform fridgeLocation;
     public Transform dishesLocation;
@@ -29,33 +29,33 @@ public class Bunny00Controller : MonoBehaviour
     {
         switch (_currentState)
         {
-            case Enums.Bunny00State.WalkingToFridge:
-                MoveToLocation(fridgeLocation, Enums.Bunny00State.TurningFromFridge, _isWalking);
+            case Enums.NPCBunny1.WalkingToFridge:
+                MoveToLocation(fridgeLocation, Enums.NPCBunny1.TurningFromFridge, _isWalking);
                 break;
 
-            case Enums.Bunny00State.TurningFromFridge:
-                SetYRotation(Enums.Bunny00State.SearchingFridge, _isWalking, _searchFridge);
+            case Enums.NPCBunny1.TurningFromFridge:
+                SetYRotation(Enums.NPCBunny1.SearchingFridge, _isWalking, _searchFridge);
                 break;
 
-            case Enums.Bunny00State.SearchingFridge:
-                SearchLocation(Enums.Bunny00State.WalkingToDishes, _searchFridge, _isWalking);
+            case Enums.NPCBunny1.SearchingFridge:
+                SearchLocation(Enums.NPCBunny1.WalkingToDishes, _searchFridge, _isWalking);
                 break;
 
-            case Enums.Bunny00State.WalkingToDishes:
-                MoveToLocation(dishesLocation, Enums.Bunny00State.TurningFromDishes, _isWalking);
+            case Enums.NPCBunny1.WalkingToDishes:
+                MoveToLocation(dishesLocation, Enums.NPCBunny1.TurningFromDishes, _isWalking);
                 break;
 
-            case Enums.Bunny00State.TurningFromDishes:
-                SetYRotation(Enums.Bunny00State.WashingDishes, _isWalking, _washDishes);
+            case Enums.NPCBunny1.TurningFromDishes:
+                SetYRotation(Enums.NPCBunny1.WashingDishes, _isWalking, _washDishes);
                 break;
 
-            case Enums.Bunny00State.WashingDishes:
-                SearchLocation(Enums.Bunny00State.WalkingToFridge, _washDishes, _isWalking);
+            case Enums.NPCBunny1.WashingDishes:
+                SearchLocation(Enums.NPCBunny1.WalkingToFridge, _washDishes, _isWalking);
                 break;
         }
     }
 
-    private void MoveToLocation(Transform targetLocation, Enums.Bunny00State nextState, int param)
+    private void MoveToLocation(Transform targetLocation, Enums.NPCBunny1 nextState, int param)
     {
         RotateTowards(targetLocation.position);
 
@@ -74,12 +74,12 @@ public class Bunny00Controller : MonoBehaviour
         }
     }
 
-    private void SearchLocation(Enums.Bunny00State nextState, int param, int changeParam)
+    private void SearchLocation(Enums.NPCBunny1 nextState, int param, int changeParam)
     {
         StartCoroutine(CompleteSearchAnimation(nextState, param, changeParam));
     }
 
-    private IEnumerator CompleteSearchAnimation(Enums.Bunny00State nextState, int param, int changeParam)
+    private IEnumerator CompleteSearchAnimation(Enums.NPCBunny1 nextState, int param, int changeParam)
     {
         yield return new WaitForSeconds(5f);
 
@@ -88,7 +88,7 @@ public class Bunny00Controller : MonoBehaviour
         _currentState = nextState;
     }
 
-    private void SetYRotation(Enums.Bunny00State nextState, int param, int changeParam)
+    private void SetYRotation(Enums.NPCBunny1 nextState, int param, int changeParam)
     {
         Quaternion targetRotation = Quaternion.Euler(0f, 0, 0f);
         SmoothRotate(targetRotation, param, changeParam);

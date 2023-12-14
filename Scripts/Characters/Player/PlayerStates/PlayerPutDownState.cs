@@ -11,7 +11,7 @@ public class PlayerPutDownState : PlayerStayState
     public override void Enter()
     {
         base.Enter();
-        StartAnimation(stateMachine.Player.AnimationData.PutDownParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.PutDownParameterHash);
     }
 
     public override void Exit() 
@@ -19,7 +19,7 @@ public class PlayerPutDownState : PlayerStayState
         base.Exit();
         stateMachine.IsHolding = false;
         putDownConducted = false;
-        StopAnimation(stateMachine.Player.AnimationData.PutDownParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.PutDownParameterHash);
     }
 
     public override void Update()

@@ -22,7 +22,7 @@ public class Customer: MonoBehaviour
     private CustomerStateMachine _customerStateMachine;
     private ResourceManager _resourceManager;
     public CustomerAnimationData AnimationData { get; private set; }
-    private CustomerEnduranceUI _enduranceUI;
+    private CustomerEnduranceController enduranceController;
     private OrderChatBubble _orderChat;
     private CustomerWear _wear;
     private CustomerEmotion _emotion;
@@ -56,7 +56,7 @@ public class Customer: MonoBehaviour
     public void InitComponents()
     {
         TryGetComponent<NavMeshAgent>(out _agent);
-        TryGetComponent<CustomerEnduranceUI>(out _enduranceUI);
+        TryGetComponent<CustomerEnduranceController>(out enduranceController);
         TryGetComponent<OrderChatBubble>(out _orderChat);
         TryGetComponent<CustomerEmotion>(out _emotion);
         TryGetComponent<CustomerWear>(out _wear);
@@ -85,7 +85,7 @@ public class Customer: MonoBehaviour
     {
         DebugUtil.AssertNotAllocateInInspector(_agent,nameof(_agent));
         DebugUtil.AssertNotAllocateInInspector(_animator,nameof(_animator));
-        DebugUtil.AssertNotAllocateInInspector(_enduranceUI,nameof(_enduranceUI));
+        DebugUtil.AssertNotAllocateInInspector(enduranceController,nameof(enduranceController));
         DebugUtil.AssertNotAllocateInInspector(_wear,nameof(_wear));
         DebugUtil.AssertNotAllocateInInspector(_emotion,nameof(_emotion));
         DebugUtil.AssertNotAllocateInInspector(_orderChat,nameof(_orderChat));
@@ -164,7 +164,7 @@ public class Customer: MonoBehaviour
  
         while (waitTime < _data.currentMaxEndurance && !isGiveFood)
         {
-            _enduranceUI.SetProgress(waitTime/_data.currentMaxEndurance);
+            enduranceController.SetProgress(waitTime/_data.currentMaxEndurance);
             waitTime = Time.time - startTime;
             yield return null;
         }
@@ -229,7 +229,7 @@ public class Customer: MonoBehaviour
     public void StopWaiting(CustomerEmotionType type)
     {
         isGiveFood = true;
-        _enduranceUI.SetActiveEnduranceUI(false,type);
+        enduranceController.SetActiveEnduranceUI(false,type);
     }
     
     public void CallOnReject()
@@ -344,14 +344,14 @@ public class Customer: MonoBehaviour
 
     public void OpenWaitUI()
     {
-        _enduranceUI.SetActiveEnduranceUI(!_isCustomMode,GetEmotionType());
+        enduranceController.SetActiveEnduranceUI(!_isCustomMode,GetEmotionType());
         _rejectButton.ActiveButton(!_isCustomMode);
         _orderChat.SetActive(true);
     }
 
     public void CloseWaitUI()
     {
-        _enduranceUI.SetActiveEnduranceUI(false,CustomerEmotionType.Perfect);
+        enduranceController.SetActiveEnduranceUI(false,CustomerEmotionType.Perfect);
         _rejectButton.ActiveButton(false);
         _orderChat.SetActive(false);
     }
@@ -393,7 +393,7 @@ public class Customer: MonoBehaviour
 
     public CustomerEmotionType GetEmotionType()
     {
-        return _enduranceUI.GetCustomerEmotionType();
+        return enduranceController.GetCustomerEmotionType();
     }
 
     public void CallOnDeliverMenu(CustomerEmotionType Satisfy)
@@ -417,13 +417,13 @@ public class Customer: MonoBehaviour
         {
             if (!isRight)
             {
-                Sprite EmotionImage = _enduranceUI.GetCustomerEmotionSprite(CustomerEmotionType.Angry);
+                Sprite EmotionImage = enduranceController.GetCustomerEmotionSprite(CustomerEmotionType.Angry);
                 Sprite EmotionText = _data.emotionImageText[(int)CustomerEmotionType.Angry]; 
                 imageSetter.Init(EmotionText,EmotionImage);
             }
             else
             {
-                Sprite EmotionImage = _enduranceUI.GetCustomerEmotionSprite(currentEmotionType);
+                Sprite EmotionImage = enduranceController.GetCustomerEmotionSprite(currentEmotionType);
                 Sprite EmotionText = _data.emotionImageText[(int)currentEmotionType]; 
                 imageSetter.Init(EmotionText,EmotionImage);
             }

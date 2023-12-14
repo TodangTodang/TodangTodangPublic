@@ -1,3 +1,5 @@
+using System.CodeDom;
+
 public class Strings
 {
     public class Prefs
@@ -12,6 +14,8 @@ public class Strings
         public const string EFFECTVOLUME_KEY = "EffectVolumeKey";
         public const string TEXTUREQUALITY_KEY = "TextureQualityKey";
         public const string FRAMERATE_KEY = "FramerateKey";
+        public const string SAVESCREEN = "SaveScreen"; 
+
     }
 
     public class Prefabs
@@ -159,7 +163,10 @@ public class Strings
 
         public const string LOW = "낮음";
         public const string MEDIUM = "중간";
-        public const string HIGH = "높음"; 
+        public const string HIGH = "높음";
+
+        public const string FULL_SCREENMODE = "전체화면";
+        public const string WINDOW_SCREENMODE = "창모드";
     }
 
     public class PausePanel

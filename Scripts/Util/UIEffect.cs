@@ -64,4 +64,16 @@ public static class UIEffect
 
         return onGoingTextEffects[text];
     }
+
+    public static void ClearEffects()
+    {
+        onGoingTextEffects.Clear();
+
+        foreach(KeyValuePair<UI_Base, Tween> kvp in onGoingUIEffects)
+        {
+            kvp.Value.Kill();
+        }
+
+        onGoingUIEffects.Clear();  
+    }
 }

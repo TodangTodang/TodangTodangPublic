@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,8 +12,7 @@ public class UI_GameSettingsPC : UI_GameSettings
 
     private List<Resolution> _resolutions = new List<Resolution>();
     private int _resolutionNum;
-    private bool _isFullScreenMode = true; 
-    private Resolution _defaultResolution;
+    private bool _isFullScreenMode;
 
     protected override void Awake()
     {
@@ -28,13 +26,13 @@ public class UI_GameSettingsPC : UI_GameSettings
 
             if (_resolutions.Any(existingResolution => existingResolution.width == resolution.width))
             {
-                continue; 
+                continue;
             }
 
             float aspectRatio = (float)resolution.width / resolution.height;
             if (Mathf.Approximately(aspectRatio, 16f / 10f) || Mathf.Approximately(aspectRatio, 16f / 9f) || Mathf.Approximately(aspectRatio, 4f / 3f))
             {
-                if (resolution.refreshRateRatio.value >= 59 && resolution.refreshRateRatio.value <= 60)
+                if (resolution.refreshRateRatio.value >= 59 && resolution.refreshRateRatio.value < 61)
                 {
                     _resolutions.Add(resolution);
                 }
@@ -54,6 +52,7 @@ public class UI_GameSettingsPC : UI_GameSettings
             {
                 _resolutionDropdown.value = optionNum;
                 option.text = resolution.width + "X" + resolution.height;
+                Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen); 
             }
 
             optionNum++;
@@ -61,22 +60,25 @@ public class UI_GameSettingsPC : UI_GameSettings
 
         _resolutionDropdown.RefreshShownValue();
 
-        _screenModeButton.isOn =_isFullScreenMode ? true : false;
-
-        _defaultResolution = new Resolution
-        {
-            width = Screen.currentResolution.width,
-            height = Screen.currentResolution.height,
-        };
-
-        InitBind();
+        _isFullScreenMode = Screen.fullScreen;
+        GameSettingsData.ScreenMode = _isFullScreenMode;
+        DefaultSettingsData.ScreenMode = _isFullScreenMode; 
     }
 
     public override void OpenUI(bool isSound = true, bool isAnimated = true)
     {
-        base.OpenUI(isSound, isAnimated);
-        _defaultResolution.width = Screen.currentResolution.width;
-        _defaultResolution.height = Screen.currentResolution.height;
+        base.OpenUI(isSound, true);
+        DefaultSettingsData.ResolutionData  = _resolutions[_resolutionNum];
+
+        GameSettingsData.ResolutionData = _resolutions[_resolutionNum]; 
+
+         _isFullScreenMode = Screen.fullScreen;
+        DefaultSettingsData.ScreenMode = _isFullScreenMode;
+        GameSettingsData.ScreenMode = _isFullScreenMode; 
+
+        Screen.SetResolution(_resolutions[_resolutionNum].width, _resolutions[_resolutionNum].height, _isFullScreenMode);
+
+        _screenModeButton.isOn = _isFullScreenMode ? true : false;
     }
 
     protected override void InitBind()
@@ -96,27 +98,30 @@ public class UI_GameSettingsPC : UI_GameSettings
         _resolutions.CopyTo(resolutionsArray);
         Screen.SetResolution(resolutionsArray[_resolutionNum].width, resolutionsArray[_resolutionNum].height, _isFullScreenMode);
 
-        GameSettingsData.MarkAsDirty();
+        PlayerPrefs.SetInt(Strings.Prefs.SAVESCREEN, 1);
+
+        _soundManager.Play(Strings.Sounds.UI_BUTTON);
+        GameSettingsData.ResolutionData = _resolutions[_resolutionNum];
     }
 
     public void OnFullScreenButton(bool isFull)
     {
         _isFullScreenMode = isFull;
 
-        _screenModeText.text = isFull ? "전체화면" : "창모드";
-        Screen.SetResolution(_resolutions[_resolutionNum].width, _resolutions[_resolutionNum].height,_isFullScreenMode);
-        GameSettingsData.MarkAsDirty();
+        _screenModeText.text = _isFullScreenMode ? Strings.GameSettings.FULL_SCREENMODE : Strings.GameSettings.WINDOW_SCREENMODE;
+        Screen.SetResolution(_resolutions[_resolutionNum].width, _resolutions[_resolutionNum].height, _isFullScreenMode);
+        _soundManager.Play(Strings.Sounds.UI_BUTTON);
+        GameSettingsData.ScreenMode = _isFullScreenMode; 
     }
 
     protected override void RevertData()
     {
         base.RevertData();
 
-
         int defaultResolutionIndex = -1;
         for (int i = 0; i < _resolutions.Count; i++)
         {
-            if (_resolutions[i].width == _defaultResolution.width && _resolutions[i].height == _defaultResolution.height)
+            if (_resolutions[i].width == DefaultSettingsData.ResolutionData.width && _resolutions[i].height == DefaultSettingsData.ResolutionData.height)
             {
                 defaultResolutionIndex = i;
                 break;
@@ -128,7 +133,9 @@ public class UI_GameSettingsPC : UI_GameSettings
             _resolutionDropdown.value = defaultResolutionIndex;
             _resolutionDropdown.RefreshShownValue();
 
-            Screen.SetResolution(_resolutions[defaultResolutionIndex].width, _resolutions[defaultResolutionIndex].height, _isFullScreenMode);
+            _isFullScreenMode = DefaultSettingsData.ScreenMode;
+            _screenModeText.text = _isFullScreenMode ? Strings.GameSettings.FULL_SCREENMODE : Strings.GameSettings.WINDOW_SCREENMODE;
+            Screen.SetResolution(DefaultSettingsData.ResolutionData.width, DefaultSettingsData.ResolutionData.height, _isFullScreenMode);
         }
     }
 }

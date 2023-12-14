@@ -72,7 +72,7 @@ public class UI_RecipeSlot : MonoBehaviour
         if (_new.activeInHierarchy)
         {
             
-            GameManager.Instance.GetPlayerData().RemoveUnlockedRecipe(recipe.Result);
+            GameManager.Instance.GetPlayerData().RemoveUnlockedRecipe(recipe.Result as ResultInfoSO);
             _updateNewMark?.Invoke();
             SetNewMark(false);
         }

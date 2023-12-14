@@ -30,8 +30,9 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         _effectManager = EffectManager.Instance;
-        _effectManager.Init();
-
+        if(!_effectManager.isInit)
+            _effectManager.Init();
+        
         _uiManager = UIManager.Instance;
 
         SetCursor();
@@ -66,7 +67,7 @@ public class GameManager : Singleton<GameManager>
         _dataManager.Load<MarketData>(out _marketSystem);
         _dataManager.Load<NewsSystem>(out _newsSystem);
         _dataManager.Load<DecoStoreData>(out _decoStore);
-        EffectManager.Instance.Init();
+        _effectManager.Init();
         
         if (_dataManager.isCorrupted)
         {
@@ -155,7 +156,7 @@ public class GameManager : Singleton<GameManager>
         _newsSystem.CheckTodaysNews(_playerData.Date);
         _newsSystem.ViewNews();
         _dataManager.SaveAllData();
-        TestVersionEnd();
+        //TestVersionEnd();
     }
 
     public void ApplicationExit()
@@ -188,14 +189,33 @@ public class GameManager : Singleton<GameManager>
     private void ConductEscapeBehaviour(InputAction.CallbackContext context)
     {
         UI_Base currentUI = _uiManager.GetCurrentUI();
-        if (currentUI != null && !_isOnControlMode)
+
+        if (currentUI == null)
+        {
+            OnExit();
+
+            return;
+        }
+        else if (_uiManager.IsUIActivated<UI_GameSettings>())
+        {
+            UI_GameSettings _gameSettings;
+            #region GameSetting
+            //모바일
+            //_gameSettings = _uiManager.GetUIComponent<UI_GameSettings>();
+            _gameSettings = _uiManager.GetUIComponent<UI_GameSettingsPC>();
+            #endregion
+
+            if (currentUI == _gameSettings) _gameSettings.OnClosedButton();
+            else if (currentUI is UI_Popup) (currentUI as UI_Popup).ClosePopup(Enums.PopupButtonType.Cancel);
+            else currentUI.CloseUI();
+
+            return;
+        }
+
+        if (!_isOnControlMode)
         {
             if (currentUI is UI_Popup) (currentUI as UI_Popup).ClosePopup(Enums.PopupButtonType.Cancel);
             else currentUI.CloseUI();
-        }
-        else
-        {
-            OnExit();
         }
     }
 
@@ -204,7 +224,14 @@ public class GameManager : Singleton<GameManager>
         SceneManagerEx sceneManager = SceneManagerEx.Instance;
         if (sceneManager.CurrentSceneType == Scenes.HomeScene)
         {
-            _uiManager.GetUIComponent<UI_GameSettings>().OpenUI();
+            UI_GameSettings _gameSettings;
+            #region GameSetting
+            // 모바일
+            //_gameSettings = _uiManager.GetUIComponent<UI_GameSettings>();
+            #endregion
+
+            _gameSettings = _uiManager.GetUIComponent<UI_GameSettingsPC>();
+            _gameSettings.OpenUI();
         }
         else
         {

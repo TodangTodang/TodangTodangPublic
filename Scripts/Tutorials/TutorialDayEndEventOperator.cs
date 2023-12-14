@@ -37,8 +37,9 @@ public class TutorialDayEndEventOperator : TutorialEventOperator
         _uiManager = UIManager.Instance;
         _dataManager = DataManager.Instance;
         _playerData = _gameManager.GetPlayerData();
-
+#if UNITY_EDITOR
         #region Check Null Exception
+       
         DebugUtil.AssertNullException(_gameManager, "GameManager");
         DebugUtil.AssertNullException(_uiManager, "UIManager");
         DebugUtil.AssertNullException(_dataManager, "DataManager");
@@ -48,7 +49,9 @@ public class TutorialDayEndEventOperator : TutorialEventOperator
         DebugUtil.AssertNotAllocateInInspector(_tutorialOpenMarket, "_tutorialOpenMarket");
         DebugUtil.AssertNotAllocateInInspector(_tutorialUpgrade, "_tutorialUpgrade");
         DebugUtil.AssertNotAllocateInInspector(_tutorialDayEnd, "_tutorialDayEnd");
+
         #endregion
+#endif
     }
 
     public override bool SetNextEvent(TutorialEventType eventType)

@@ -139,11 +139,23 @@ public class UIManager : Singleton<UIManager>
         return null;
     }
 
+    public bool IsUIActivated<T>() where T : UI_Base
+    {
+        foreach (UI_Base ui in _uiOnScreen)
+        {
+            if (ui is T) return true;
+            else continue;
+        }
+
+        return false;
+    }
+
     public void CloseAllPopUps(bool isSound = false)
     {
-        foreach (var popUp in _uiPopupDic)
+        foreach (KeyValuePair<string, UI_Popup> popUp in _uiPopupDic)
         {
-            popUp.Value.ClosePopup(Enums.PopupButtonType.Cancel, isSound);
+            if (popUp.Value.gameObject.activeSelf)
+                popUp.Value.CloseUI();
         }
     }
 }

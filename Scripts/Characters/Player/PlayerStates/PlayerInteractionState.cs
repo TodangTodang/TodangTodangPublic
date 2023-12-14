@@ -18,7 +18,7 @@ public class PlayerInteractionState : PlayerStayState
             return;
         }
         stateMachine.InteractionTime = 1f;
-        StartAnimation(stateMachine.Player.AnimationData.InteractionParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.InteractionParameterHash);
         Debug.Log("InteractionState");
     }
 
@@ -40,7 +40,7 @@ public class PlayerInteractionState : PlayerStayState
     public override void Exit()
     {
         base.Exit();
-        StopAnimation(stateMachine.Player.AnimationData.InteractionParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.InteractionParameterHash);
     }
 
     protected override void OnInteraction(InputAction.CallbackContext context)

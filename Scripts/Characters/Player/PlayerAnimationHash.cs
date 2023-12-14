@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class PlayerAnimationData
+public class PlayerAnimationHash
 {
 
     [SerializeField] private string stayParameterName = "@Stay";

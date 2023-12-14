@@ -1,12 +1,14 @@
+using UnityEngine;
+
 public class GameSettingsData
 {
     public float BgmVolume = 0.5f;
     public float EffectVolume = 0.5f;
     public Enums.TextureQuality TextureQuality = Enums.TextureQuality.Medium;
     public int Framerate = 60;
+    public Resolution ResolutionData = Screen.currentResolution; 
+    public bool ScreenMode  = Screen.fullScreen;
 
-    private bool _isDirty = false; 
-    public bool IsDirty => _isDirty;
 
     public GameSettingsData(float bgmVolume, float effectVolume,Enums.TextureQuality textureQuality, int framerate) : base()
     {
@@ -16,13 +18,21 @@ public class GameSettingsData
         Framerate = framerate;
     }
 
-    public void MarkAsDirty()
+    public GameSettingsData Copy()
     {
-        _isDirty = true; 
+        return new GameSettingsData(BgmVolume, EffectVolume, TextureQuality, Framerate);
     }
 
-    public void ResetDirty()
+    public bool Equals(GameSettingsData other)
     {
-        _isDirty = false;
+        if (other == null) return false;
+
+        return BgmVolume == other.BgmVolume &&
+               EffectVolume == other.EffectVolume &&
+               TextureQuality == other.TextureQuality &&
+               Framerate == other.Framerate &&
+               ResolutionData.width == other.ResolutionData.width &&
+               ResolutionData.height == other.ResolutionData.height&&
+               ScreenMode == other.ScreenMode ;
     }
 }

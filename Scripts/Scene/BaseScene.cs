@@ -25,6 +25,7 @@ public class BaseScene : MonoBehaviour
 
     public virtual void Clear() 
     {
+        UIEffect.ClearEffects();
         UIManager.Instance.CloseAllPopUps();
         UIManager.Instance.RemoveAllUIComponent();
     }

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using static Strings;
 
 public class UI_PausePanel : UI_Base
 {
@@ -11,7 +12,12 @@ public class UI_PausePanel : UI_Base
     public event Action OnUIOpen;
     public event Action OnUIClose;
 
-    private UI_GameSettings _gameSettings;
+    // 모바일
+    // private UI_GameSettings _gameSettings;
+
+    private UI_GameSettingsPC _gameSettingsPC;
+
+
 
     private UIManager _uiManager;
     private GameManager _gameManager;
@@ -50,14 +56,23 @@ public class UI_PausePanel : UI_Base
 
     private void OnSettingsButton()
     {
-        if (_gameSettings == null)
+        //if (_gameSettings == null)
+        //{
+        //    if (!_uiManager.TryGetUIComponent<UI_GameSettings>(out _gameSettings))
+        //    {
+        //        Debug.LogError("Null Exception : UI_GameSettings"); 
+        //    }
+        //}
+        //_gameSettings.OpenUI(false);
+
+        if (_gameSettingsPC == null)
         {
-            if (!_uiManager.TryGetUIComponent<UI_GameSettings>(out _gameSettings))
+            if (!_uiManager.TryGetUIComponent<UI_GameSettingsPC>(out _gameSettingsPC))
             {
-                Debug.LogError("Null Exception : UI_GameSettings"); 
+                Debug.LogError("Null Exception : UI_GameSettingsPC");
             }
         }
-        _gameSettings.OpenUI(false);
+        _gameSettingsPC.OpenUI(false);
     }
 
     private void OnHomeButton()

@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class StartScene : BaseScene
@@ -19,8 +20,37 @@ public class StartScene : BaseScene
 
         //AnalyticsManager.Init();
 
+        SetResolution(); 
+
         _soundManager.Play(Strings.Sounds.BGM_STARTSCENE, Enums.AudioType.Bgm);
         
         return true;
+    }
+
+    private void SetResolution()
+    {
+        int saveScreen = PlayerPrefs.GetInt(Strings.Prefs.SAVESCREEN, -1);
+
+        if(saveScreen == -1)
+        {
+            Resolution optimalResolution = GetOptimalResolution();
+            Screen.SetResolution(optimalResolution.width, optimalResolution.height, Screen.fullScreenMode);
+        }
+    }
+
+    private Resolution GetOptimalResolution()
+    {
+        Resolution[] resolutions = Screen.resolutions;
+        Resolution optimalResolution = resolutions[0];
+
+        foreach (Resolution resolution in resolutions)
+        {
+            if (resolution.width > optimalResolution.width)
+            {
+                optimalResolution = resolution;
+            }
+        }
+
+        return optimalResolution;
     }
 }

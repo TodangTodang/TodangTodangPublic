@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Enums;
@@ -21,7 +22,7 @@ public class UI_GameSettings : UI_Base
     [SerializeField] private Button _dataDeleteButton;
     [SerializeField] private Button _closedButton;
 
-    private SoundManager _soundManager;
+    protected SoundManager _soundManager;
     private DataManager _dataManager;
     private UIManager _uiManager;
     private SceneManagerEx _sceneManagerEx;
@@ -39,7 +40,8 @@ public class UI_GameSettings : UI_Base
         if (_sceneManagerEx == null) _sceneManagerEx = SceneManagerEx.Instance;
 
         if (GameSettingsData == null) GameSettingsData = _dataManager.LoadGameSettings();
-        if (GameSettingsData == null) DefaultSettingsData = _dataManager.LoadGameSettings();
+        if (DefaultSettingsData == null)
+            DefaultSettingsData = GameSettingsData.Copy();
 
         Debug.Assert(_soundManager != null, "Null Exception : SoundManager");
         Debug.Assert(_dataManager != null, "Null Exception : DataManager");
@@ -53,8 +55,8 @@ public class UI_GameSettings : UI_Base
 
     protected virtual void InitBind()
     {
-        _bgmSlider.onValueChanged.AddListener(value => OnVolumeChanged(value, Enums.AudioType.Bgm));
-        _effectSlider.onValueChanged.AddListener(value => OnVolumeChanged(value, Enums.AudioType.Effect));
+        _bgmSlider.onValueChanged.AddListener(OnBGMVolumChanged);
+        _effectSlider.onValueChanged.AddListener(OnEffectVolumchanged);
 
         _textureLeftButton.onClick.AddListener(() => OnTextureChange(-1));
         _textureRightButton.onClick.AddListener(() => OnTextureChange(1));
@@ -72,38 +74,32 @@ public class UI_GameSettings : UI_Base
         base.OpenUI(isSound, isAnimated);
 
         GameSettingsData = _dataManager.LoadGameSettings();
-        DefaultSettingsData = _dataManager.LoadGameSettings();
+        DefaultSettingsData = GameSettingsData.Copy();
 
         LoadGameSettings();
-        GameSettingsData.ResetDirty(); 
     }
 
     public void LoadGameSettings()
     {
-        UpdateVolumeUI(_bgmSlider, GameSettingsData.BgmVolume, Enums.AudioType.Bgm);
-        UpdateVolumeUI(_effectSlider, GameSettingsData.EffectVolume, Enums.AudioType.Effect);
+        OnBGMVolumChanged(GameSettingsData.BgmVolume);
+        OnEffectVolumchanged(GameSettingsData.EffectVolume);
 
         OnTextureChange(0);
         OnFramerateChange(0);
     }
 
-    private void UpdateVolumeUI(Slider slider, float value, Enums.AudioType audioType)
+    private void OnBGMVolumChanged(float value)
     {
-        slider.value = value;
-        _soundManager.SetVolume(value, audioType);
+        _bgmSlider.value = value;
+        _soundManager.SetVolume(value, Enums.AudioType.Bgm);
+        GameSettingsData.BgmVolume = value;
     }
 
-    private void OnVolumeChanged(float value, Enums.AudioType audioType)
+    private void OnEffectVolumchanged(float value)
     {
-        if (audioType == Enums.AudioType.Bgm)
-            GameSettingsData.BgmVolume = value;
-
-        else if (audioType == Enums.AudioType.Effect)
-            GameSettingsData.EffectVolume = value;
-
-        _soundManager.SetVolume(value, audioType);
-
-        GameSettingsData.MarkAsDirty();
+        _effectSlider.value = value;
+        _soundManager.SetVolume(value, Enums.AudioType.Effect);
+        GameSettingsData.EffectVolume = value;
     }
 
     private void OnTextureChange(int value)
@@ -129,7 +125,7 @@ public class UI_GameSettings : UI_Base
 
         _soundManager.Play(Strings.Sounds.UI_BUTTON);
 
-        GameSettingsData.MarkAsDirty();
+        _dataManager.SaveGameSettings(GameSettingsData);
     }
 
     private void OnFramerateChange(int value)
@@ -143,7 +139,8 @@ public class UI_GameSettings : UI_Base
         _framerateLeftButton.interactable = newIndex > 0;
 
         _soundManager.Play(Strings.Sounds.UI_BUTTON);
-        GameSettingsData.MarkAsDirty();
+
+        _dataManager.SaveGameSettings(GameSettingsData);
     }
 
     private void OnDataResetButton()
@@ -181,7 +178,7 @@ public class UI_GameSettings : UI_Base
         Application.Quit();
     }
 
-    private void OnClosedButton()
+    public void OnClosedButton()
     {
         if (HasChange())
         {
@@ -201,7 +198,7 @@ public class UI_GameSettings : UI_Base
 
     private bool HasChange()
     {
-        return GameSettingsData.IsDirty; 
+        return !GameSettingsData.Equals(DefaultSettingsData); 
     }
 
     private void OnApplyConfirmButon()
@@ -219,12 +216,14 @@ public class UI_GameSettings : UI_Base
 
     private void OnCancelButton()
     {
-        RevertData(); 
+        RevertData();
         CloseUI();
     }
 
     protected virtual void RevertData()
-    { 
+    {
         GameSettingsData = DefaultSettingsData;
+        _dataManager.SaveGameSettings(GameSettingsData);
+        LoadGameSettings();
     }
 }

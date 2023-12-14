@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public struct PlayData
+public struct SalesData
 {
     public int EarnMoney;
     public int RestMoney; 

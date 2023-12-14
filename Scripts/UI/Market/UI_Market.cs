@@ -140,6 +140,7 @@ public class UI_Market : UI_Base
     // 총 주문 금액 업데이트 
     public void UpdateTotalOrderAmount(int totalOrderAmount)
     {
+        _totalOrderAmount = totalOrderAmount; 
         _totalOrderAmountText.text = totalOrderAmount.ToString();
         _orderBtn.interactable = !SetOrderButtonActivation();
     }
@@ -147,13 +148,17 @@ public class UI_Market : UI_Base
     // 주문 버튼 활성화 여부 설정 
     private bool SetOrderButtonActivation()
     {
+        bool active = false; 
         foreach(var slot in _cartSlots)
         {
             if (slot.gameObject.activeSelf)
-                return false; 
+            {
+                active = true;
+                break;
+            }
         }
 
-        return _playerMoney < _totalOrderAmount; 
+        return !active || _playerMoney < _totalOrderAmount; 
     }
 
     // 탭 버튼 클릭 시 호출

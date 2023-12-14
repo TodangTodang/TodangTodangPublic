@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class Cat00Controller : MonoBehaviour
+public class NPCCat1 : MonoBehaviour
 {
     private Animator _animator;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [field: SerializeField] public PlayerAnimationData AnimationData { get; private set; }
+    [field: SerializeField] public PlayerAnimationHash AnimationHash { get; private set; }
     public PlayerInput Input { get; private set; }
     public Animator Animator { get; private set; }
     private Rigidbody Rigidbody;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        AnimationData.Initialize();
+        AnimationHash.Initialize();
         Input = GetComponent<PlayerInput>();
         Animator = GetComponent<Animator>();
         TryGetComponent<Rigidbody>(out Rigidbody);

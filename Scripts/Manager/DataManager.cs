@@ -454,7 +454,7 @@ public class DataManager : Singleton<DataManager>
         var RiceFlour = GetDefaultData<IngredientInfoSO>("RiceFlour");
         List<IngredientInfoData> list = playerData.GetInventory<IngredientInfoData>();
         IngredientInfoData riceFlourData = new IngredientInfoData(RiceFlour, 10);
-        list.Add(new IngredientInfoData(RiceFlour, 10));
+        list.Add(riceFlourData);
 
 
 
@@ -510,11 +510,13 @@ public class DataManager : Singleton<DataManager>
 
     public void SaveGameSettings(GameSettingsData gameSettingsData)
     {
-      PlayerPrefs.SetFloat(Strings.Prefs.BGMVOLUME_KEY, gameSettingsData.BgmVolume);
+        this.gameSettingsData = gameSettingsData;
+        PlayerPrefs.SetFloat(Strings.Prefs.BGMVOLUME_KEY, gameSettingsData.BgmVolume);
         PlayerPrefs.SetFloat(Strings.Prefs.EFFECTVOLUME_KEY, gameSettingsData.EffectVolume);
-
         PlayerPrefs.SetInt(Strings.Prefs.TEXTUREQUALITY_KEY, (int)gameSettingsData.TextureQuality);
         PlayerPrefs.SetInt(Strings.Prefs.FRAMERATE_KEY, gameSettingsData.Framerate);
+
+        PlayerPrefs.Save(); 
     }
 
     private DecoStoreData MakeDefaultDecoStoreData()
@@ -631,6 +633,7 @@ public class PlayerSaveData
     public List<RecipeInfoData> RecipeInfoDatas;
     public List<KitchenUtensilInfoData> KitchenUtensilInfoDatas;
     public List<string> StoreDecorationDatas;
+    public List<string> NewUnLockedRecipeList;
     public bool isNeedHelp;
     public bool isFirstPlay;
     public bool IsCompleteUpgradeTutorial;

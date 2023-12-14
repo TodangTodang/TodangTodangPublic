@@ -1,5 +1,6 @@
 using Firebase;
 using Firebase.Analytics;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -23,14 +24,24 @@ public static class AnalyticsManager
     }
     public static void LogEvent(string eventName)
     {
-        Init();
-        FirebaseAnalytics.LogEvent(eventName);
-        Debug.Log($"{eventName}을 전송 하였습니다");
+        if(!isInit)
+            Init();
+        try
+        {
+            FirebaseAnalytics.LogEvent(eventName);
+            Debug.Log($"{eventName}을 전송 하였습니다");
+        }
+        catch (Exception e)
+        {
+            
+        }
+        
     }
 
     public static void DayEnd(int day)
     {
         LogEvent($"Day{day}SpendEvent");
+        
     }
 
     public static void AchievementRecipe(string name, int level)

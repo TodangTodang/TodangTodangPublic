@@ -12,12 +12,12 @@ public class PlayerPickUpState : PlayerStayState
     {
         base.Enter();
         stateMachine.IsHolding = true;
-        StartAnimation(stateMachine.Player.AnimationData.PickUpParameterHash);
+        StartAnimation(stateMachine.Player.AnimationHash.PickUpParameterHash);
     }
 
     public override void Exit()
     {
-        StopAnimation(stateMachine.Player.AnimationData.PickUpParameterHash);
+        StopAnimation(stateMachine.Player.AnimationHash.PickUpParameterHash);
     }
 
     public override void Update()
