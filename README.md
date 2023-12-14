@@ -49,7 +49,7 @@
 #### 클릭하면 자세한 내용을 확인하실 수 있습니다!🐰
 
 
-[<img width="400" alt="FSM" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/82091634-c3e5-4332-8210-b3e6427ad7f8">](/Detail/01.FSM_상태머신/)
+[<img width="400" alt="FSM" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/82091634-c3e5-4332-8210-b3e6427ad7f8">](/Detail/01.FSM_상태머신2)
 [<img width="400" alt="ObjectPool" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e487bad4-5732-466d-a243-8fa41a8c9dd0">](Detail/02.ObjectPool/)
 
 [<img width="400" alt="UIManager" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/ef4ca212-75c6-467a-887a-1f408b9d4066">](Detail/03.Singleton&Generic/)
