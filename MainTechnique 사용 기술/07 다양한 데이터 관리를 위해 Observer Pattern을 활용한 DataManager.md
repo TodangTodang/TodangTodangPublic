@@ -50,7 +50,7 @@
 
 Savable.cs
 
-```
+```cs
 public abstract class Savable
 {
     private DataManager _dataManager;
@@ -77,7 +77,7 @@ public abstract class Savable
 
 DataManager.cs 중 Save 관련내용
 
-```
+```cs
 public void RegistSaveData(Savable saveData)
 {
     _saveDatas.Add(saveData);
@@ -121,7 +121,7 @@ public void SaveAllData()
 
 MarketData.cs 중 JsonData 반환 코드
 
-```
+```cs
 public override string GetJsonData()
 {
     MarketSaveData marketSaveData = new MarketSaveData();
@@ -156,7 +156,7 @@ public override string GetJsonData()
 
 - DataManager.cs의 Load 과정
 
-```
+```cs
 public void LoadData<T>(out T data) where T : Savable, new()
 {
    Type dataType = typeof(T);
@@ -297,7 +297,7 @@ Init : JsonData데이터가 있을 때 로드 시 사용
 
 GetJson : 저장 시 JsonData 반환
 
-```
+```cs
 public override void Init(string json, Param saveParam = null)
 {
     MarketDataParam marketDataParam = saveParam as MarketDataParam;
@@ -335,4 +335,9 @@ public class MarketDataParam : Param
 - 이를 통해 간단하면서도, 코드 가독성 증대 및, 저장 데이터의 추가/삭제에 영향 전혀 없는 DataManager가 되었을 것임.
 
 
-## [돌아가기](/)
+<br><br>
+
+
+#### [🐰 상세코드 보기 🐰]()
+
+#### [🌙 Main README로 돌아가기 🌙](/README.md)
