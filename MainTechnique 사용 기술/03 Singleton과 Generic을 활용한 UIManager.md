@@ -33,19 +33,22 @@
 
 |메서드|기능|
 |:---:|:---:|
-|[GetUIComponent](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UIManager.cs#L12-L37)|요청 받은 UI Component가 Dictionary에 있다면 반환하고,<br>없다면 Resources 폴더에서 Load하여 Dictionary에 저장한 뒤 반환한다.|
-|[TryGetUIComponent](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UIManager.cs#L39-L67)|GetUIComponent를 응용하여 만든 메서드로, 예외 처리를 보다 쉽게 하기 위해서 추가한 메서드이다.<br>TryGetComponent 메서드처럼 out 매개변수를 사용하여 UI Component를 반환한다.<br>요청 받은 UI Component를 가져오는데 성공하면 true, 실패하면 false를 반환한다.|
-|[RemoveUIComponent](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UIManager.cs#L69-L76)|UI Component를 저장한 Dictionary에서 요청받은 해당 UI Component를 삭제한다.<br>Scene이 변경되었을 때 오브젝트가 파괴되어 더 이상 참조할 수 없는 UI Component에 접근하는 것을 방지하기 위해 사용한다.|
-|[RemoveAllUIComponent](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UIManager.cs#L78-L81)|UI Component를 저장한 Dictionary에 존재하는 모든 UI Component를 삭제한다.|
-|[ShowPopup](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UIManager.cs#L83-L112)|요청 받은 UI Popup을 Show 한다.<br>GetUIComponent와 마찬가지로 요청 받은 Popup이 Dictionary에 존재하지 않는다면 Resources 폴더에서 Load하여 저장한 뒤 반환한다.|
+|[GetUIComponent](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L12-L37)|요청 받은 UI Component가 Dictionary에 있다면 반환하고,<br>없다면 Resources 폴더에서 Load하여 Dictionary에 저장한 뒤 반환한다.|
+|[TryGetUIComponent](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L39-L67)|GetUIComponent를 응용하여 만든 메서드로, 예외 처리를 보다 쉽게 하기 위해서 추가한 메서드이다.<br>TryGetComponent 메서드처럼 out 매개변수를 사용하여 UI Component를 반환한다.<br>요청 받은 UI Component를 가져오는데 성공하면 true, 실패하면 false를 반환한다.|
+|[RemoveUIComponent](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L69-L76)|UI Component를 저장한 Dictionary에서 요청받은 해당 UI Component를 삭제한다.<br>Scene이 변경되었을 때 오브젝트가 파괴되어 더 이상 참조할 수 없는 UI Component에 접근하는 것을 방지하기 위해 사용한다.|
+|[RemoveAllUIComponent](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L78-L81)|UI Component를 저장한 Dictionary에 존재하는 모든 UI Component를 삭제한다.|
+|[ShowPopup](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L83-L112)|요청 받은 UI Popup을 Show 한다.<br>GetUIComponent와 마찬가지로 요청 받은 Popup이 Dictionary에 존재하지 않는다면 Resources 폴더에서 Load하여 저장한 뒤 반환한다.|
+|[SetUIOnScreen](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L114-L134)|UI가 열리면 Stack에 해당 UI를 Push한다.<br>UI가 닫힐 때는 Stack에서 Pop한다.|
+|[GetCurrentUI](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L136-L140)|현재 열려있는 UI를 저장하는 Stack에서 가장 위에 있는 UI를 반환한다.|
+|[CloseAllPopUps](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/Manager/UIManager.cs#L153-L160)|현재 열려있는 Popup을 모두 닫는다.<br>Scene 이동 시 열린 팝업들을 닫기 위해 사용한다.|
 
 <br>
 
 ### UI_Popup
 |메서드|기능|
 |:---:|:---:|
-|[ShowPopup](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UI_Popup.cs#L37-L44)|PopupParameter를 통해 전달 받은 Popup의 내용과 콜백을 정의한 뒤, 해당 Popup을 Open 한다.|
-|[ClosePopup](https://github.com/j-miiin/TodangTodangCodes/blob/bcb8da4e827f8da3155b97215df1687f5cb33bc6/UIManager%EB%A5%BC%20%ED%86%B5%ED%95%9C%20UI%20%EA%B4%80%EB%A6%AC/UI_Popup.cs#L46-L52)|Button의 Type(확인/취소)에 따라 ShowPopup에서 전달 받았던 Callback 메서드를 실행한 뒤, Popup을 Close 한다.|
+|[ShowPopup](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/UI/Popup/UI_Popup.cs#L37-L44)|PopupParameter를 통해 전달 받은 Popup의 내용과 콜백을 정의한 뒤, 해당 Popup을 Open 한다.|
+|[ClosePopup](https://github.com/TodangTodang/TodangTodangPublic/blob/c36933f28fcc090dda3b1e046c6fc5588de48b2a/Scripts/UI/Popup/UI_Popup.cs#L46-L52)|Button의 Type(확인/취소)에 따라 ShowPopup에서 전달 받았던 Callback 메서드를 실행한 뒤, Popup을 Close 한다.|
 
 <br>
 
