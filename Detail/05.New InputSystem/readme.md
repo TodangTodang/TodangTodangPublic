@@ -61,6 +61,8 @@
     
     - 마우스가 버튼 요소 위에 있는지 확인하는 메서드
     - UI 요소들을 대상으로 RaycastAll을 사용해서 마우스 커서가 UI요소 위에 있는지 판단
+ 
+  <br>
     
     ```
     public bool IsInteractable()
@@ -73,7 +75,7 @@
     
     - 플레이어가 상호작용 가능한 상태인지 확인하는 메서드
 
-### 활성화 중인 UI에 따라 Input을 제어해야 하는 문제 ****
+### 활성화 중인 UI에 따라 Input을 제어해야 하는 문제 
 
 ### **⚠️ 문제**
 
@@ -130,6 +132,8 @@
     ```
     
     - GameSceneUIInputController에서 이벤트에 Callback을 연결하는 메서드
+ 
+  <br>
     
     ```
     private void Init()
@@ -160,6 +164,8 @@
     - InputSystem을 제어하는 메서드를 통일시키고, 외부에서 제어 중인 InputAction을 HashSet에 저장하여 전체적인 InputSystem이 활성화/비활성화 될 때 제어 중인 InputAction에 영향이 가지 않도록 구조를 변경함
     - 하지만 Input의 통제를 더 큰 틀에서, 일관성 있게 Input 통제 상태를 관리할 필요성을 느낌
 
+<br>
+
 ### **개선 방안**
 
 - Input System이 여러 개 존재하고, 여러 씬에서 접근해서 통제해야 하는 상황이 되었을 때는 **Input을 전체적으로 관리하는 매니저 클래스를 만드는 것**도 좋은 방안이었을 것 같다고 생각.
@@ -175,6 +181,8 @@
 | EnableInput | InputSystem asset전체를 활성/비활성화 하는 기능 |
 | ControlInput | InputSystem내에서 특정한 InpuyAction만을 활성/비활성화 하는 기능 |
 | IsMouseOverUIButton | 마우스 커서의 위치에 따라 플레이어의 인풋을 제어할 수 있도록 bool값을 반환하는 기능 |
+
+<br>
 
 ### GameSceneUIInputController
 
