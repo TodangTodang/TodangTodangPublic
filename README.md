@@ -97,6 +97,6 @@
 | 노동균 | 팀장 | 손님AI, 뉴스, 프롤로그 씬, 게임 엔딩 씬, 데이터, Cheater, 애널리틱스  | https://github.com/shehdrbs123 | https://blog.naver.com/shehdrbs123 |
 | 김정민 | 부팀장 | 인벤토리, 장식품 상점, 튜토리얼, 게임 오버 씬, 연습모드, 오브젝트 풀링, UIManager, UI디자인 | https://github.com/j-miiin | https://velog.io/@lazypotato |
 | 박희원  | 팀원 | 재료주문, 하루결산, 게임설정, 해상도대응, 파산씬, Sound | https://github.com/phw97123 | https://hwon-note.tistory.com/ |
-| 이현지 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 팀원 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 플레이어, 입력시스템, 주방기구, 뉴스, 연습모드, 쿡북, 닷트윈, 애니메이션 디자인, UI디자인 | https://github.com/szlovelee | https://szloveleesz.tistory.com/ |
+| 이현지 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 팀원 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | 플레이어, 입력시스템, 주방기구, 뉴스, 연습모드, 쿡북, 닷트윈, 애니메이션 디자인, UI디자인 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | https://github.com/szlovelee | https://szloveleesz.tistory.com/ |
 
 [📌 목차로 돌아가기 📌](#목차)
