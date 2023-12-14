@@ -104,6 +104,6 @@
 <br><br>
 
 
-#### [🐰 상세코드 보기 🐰]()
+#### [🐰 상세코드 보기 🐰](https://github.com/j-miiin/TodangTodangCodes/tree/main/Object%20Pooling)
 
 #### [🌙 Main README로 돌아가기 🌙](/README.md)
