@@ -33,10 +33,7 @@
     
     ```
     public interface IInteractable
-    {
-        //public void OnTriggerEnter(Collider other);
-        //public void OnTriggerExit(Collider other);
-    
+    {    
         public void Interaction();
     
         public void PickUp();
