@@ -1,8 +1,10 @@
-# [인터페이스] 다형성을 활용한 주방 기구 설계
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=Interface&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
+
+<br>
 
 ## 개요
 
-![](Image/interface.gif)
+![interface](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/c9b39bf8-43ad-482d-8613-f5f44108d0f1)
 
 - 서로 다른 기능을 수행하는 주방기구들과 플레이어가 상호작용 해야 하는 상황에서 구조 고민
 - 상속 구조를 통해서 코드 재사용 및 통일성 있는 메서드 호출
@@ -14,7 +16,7 @@
 
 ## 상속 구조와 인터페이스
 
-![](Image/classdiagram.png)
+![classdiagram](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e1ecb981-680a-4382-879b-e463b7b1b7b3)
 
 - 인터페이스와 상속 설계로 Player에서 IInteractable을 통해 다양한 행동 가능하도록 구성
 - 이에 따라 코드의 재사용성이 높아지고, 코드 유지 보수성이 향상됨
@@ -31,7 +33,7 @@
 
 - IInteractable.cs
     
-    ```
+    ```cs
     public interface IInteractable
     {    
         public void Interaction();
@@ -44,7 +46,7 @@
     
 - KitchenInteraction.cs
     
-    ```
+    ```cs
     public virtual void Interaction()
     {
         if (ingredients.Count <= 0) return;
@@ -105,7 +107,7 @@
     
 - CounterTop.cs
     
-    ```
+    ```cs
     public class CounterTop : KitchenInteraction
     {
         protected override void Initialize()
@@ -124,7 +126,7 @@
     
 - WaterDrinker.cs
     
-    ```
+    ```cs
     public class WaterDrinker : KitchenInteraction
     {
         protected override void Initialize()
@@ -169,7 +171,7 @@
 
 - Player.cs
     
-    ```
+    ```cs
     // 각 메서드를 저장하는 변수
     private Action InteractionAction;
     private Action PickUpAction;
@@ -194,7 +196,7 @@
     
 - PlayerStayState.cs (호출 예시)
     
-    ```
+    ```cs
     protected override void OnPickUp(InputAction.CallbackContext context)
     {
         base.OnPickUp(context);
@@ -209,4 +211,9 @@
     - PickUp관련 InputAction의 콜백 메서드에서 Player의 PickUp()메서드 호출
 
 
-## [돌아가기](/)
+<br><br>
+
+
+#### [🐰 상세코드 보기 🐰]()
+
+#### [🌙 Main README로 돌아가기 🌙](/README.md)

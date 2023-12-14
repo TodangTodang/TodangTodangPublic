@@ -1,4 +1,6 @@
-# [New InputSystem] 크로스 플랫폼 대응
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=New%20Input%20System&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
+
+<br>
 
 ## 개요
 
@@ -21,7 +23,7 @@
 
 💫 **Input System 구성**
 
-![](Image/InputAction.png)
+![InputAction](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/2604c808-2a2a-413c-b7a9-04f3f2415b05)
 
 <br>
 
@@ -31,7 +33,7 @@
 
 ### **마우스 좌클릭과 UI 버튼 입력의 겹침 오류 현상**
 
-![](Image/Describe.png)
+![Describe](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/877747b8-19ac-4015-9f48-510deabd9a46)
 
 ### **⚠️ 문제**
 
@@ -51,7 +53,7 @@
 - 마우스 좌클릭 이벤트에 연결 된 콜백 메서드에서 현재 마우스가 버튼 위에 있는지 확인한 후 메서드를 실행하도록 함
 - 관련 코드
     
-    ```
+    ```cs
     public bool IsMouseOverUIButton()
     {
         rayResults.Clear();
@@ -68,7 +70,7 @@
  
   <br>
     
-    ```
+    ```cs
     public bool IsInteractable()
     {
         if (Input.IsMouseOverUIButton()) return false;
@@ -111,7 +113,7 @@
     
 - 관련 코드
     
-    ```
+    ```cs
     private void AddCallbacks()
         {
             _pausePanel.OnUIOpen += (() => PauseCallback(true));
@@ -141,7 +143,7 @@
  
   <br>
     
-    ```
+    ```cs
     private void Init()
     {
         _uiManager = UIManager.Instance;
@@ -205,4 +207,9 @@
 | CookBookCallback | 쿡북(조리법) UI가 열리거나 닫힐 때 발생하는 이벤트에 따라 Input이 제어될 수 있도록 해주는 Callback 메서드 |
 
 
-## [돌아가기](/)
+<br><br>
+
+
+#### [🐰 상세코드 보기 🐰]()
+
+#### [🌙 Main README로 돌아가기 🌙](/README.md)

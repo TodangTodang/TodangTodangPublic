@@ -1,6 +1,8 @@
-# [Firebase Analytics] 게임 플레이 분석을 위한 외부 모듈 사용
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=Firebase%20Analytics&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
 
-![기술 고민 - 동균-1.png](/Detail/09.FirebaseAnalytics/[Firebase%20Analytics]%20게임%20플레이%20분석을%20위한/09.FirebaseAnalytics.png)
+<br>
+
+![09 FirebaseAnalytics](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/9c7b4015-ea87-483e-ad3f-8e896b050624)
 
 ⚠️ **기술 도입 배경**
 
@@ -17,4 +19,9 @@
 - 통계자료를 통해 기획의 의도가 정확히 전달되는지 통계적으로 알기 쉬워졌음.
 - 외부 모듈을 도입하고 생길 수 있는 문제점(예 : Github LFS, 수집되는 데이터 등)을 이해할 수 있었다.
 
-### [돌아가기](/README.md)
+<br><br>
+
+
+#### [🐰 상세코드 보기 🐰]()
+
+#### [🌙 Main README로 돌아가기 🌙](/README.md)
