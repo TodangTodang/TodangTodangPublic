@@ -31,58 +31,6 @@
 
 ## New Input System의 활용에 따른 **문제점 발생**
 
-### **마우스 좌클릭과 UI 버튼 입력의 겹침 오류 현상**
-
-![Describe](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/877747b8-19ac-4015-9f48-510deabd9a46)
-
-### **⚠️ 문제**
-
-- 상호작용 키를 마우스 좌클릭으로 변경하면서 Input 입력과 버튼 클릭이 겹치게 됨
-    
-    → 재료상자나 찻주전자 앞에서 UI버튼을 누를 경우, 입력이 우선적으로 처리되어 전용 UI가 뜨기 때문에 버튼의 기능을 수행할 수 없는 상황이 됨
-    
-
-### **🛠️ 과정**
-
-- 마우스 커서를 숨기고, alt키를 눌렀을 때만 커서가 보이도록, 이 때는 상호작용 입력 경로로 사용되지 않도록 설정하는 방법 고민. 하지만 기획적인 측면에서 좋지 못하다고 판단
-- UI 버튼을 On-ScreenButton으로 변경하는 것을 고려했으나, 마우스 클릭보다 늦게 인식되는 것이 마찬가지였고, 인풋 액션의 우선순위를 설정하지 못한다는 문제가 여전히 존재
-- 버튼 위에 마우스가 있을 때 인풋 자체를 막는 방법에 대해 생각했으나, 순간적으로 인풋을 막는 행위가 반복적으로 일어나는 것은 비효율적이고 이미 인풋을 활성/비활성화하는 부분이 있기 때문에 문제 발생 우려
-
-### **💡 선택** 및 결과
-
-- 마우스 좌클릭 이벤트에 연결 된 콜백 메서드에서 현재 마우스가 버튼 위에 있는지 확인한 후 메서드를 실행하도록 함
-- 관련 코드
-    
-    ```cs
-    public bool IsMouseOverUIButton()
-    {
-        rayResults.Clear();
-        eventData.position = Input.mousePosition;
-    
-        EventSystem.current.RaycastAll(eventData, rayResults);
-    
-        return rayResults.Count > 0;
-    }
-    ```
-    
-    - 마우스가 버튼 요소 위에 있는지 확인하는 메서드
-    - UI 요소들을 대상으로 RaycastAll을 사용해서 마우스 커서가 UI요소 위에 있는지 판단
- 
-  <br>
-    
-    ```cs
-    public bool IsInteractable()
-    {
-        if (Input.IsMouseOverUIButton()) return false;
-        if (InteractionAction != null) return true;
-        return false;
-    }
-    ```
-    
-    - 플레이어가 상호작용 가능한 상태인지 확인하는 메서드
-
-<br>
-
 ### 활성화 중인 UI에 따라 Input을 제어해야 하는 문제 
 
 ### **⚠️ 문제**
@@ -169,8 +117,10 @@
 
 ### **아쉬운 점**
 
-- 처음 설계할 때는 Input이 플레이어가 요리를 하거나 움직일 때만 쓰이는 것으로 기획되었기 때문에 Player에게 종속되도록 만들어짐. 하지만 프로젝트 **후반부에 Input과 관련된 다양한 기능이 추가되면서 Input 스크립트를 참조하는 것이 어려워짐**
-- 처음에 Input을 활성화/비활성화 할 때 InputAction을 직접 활성화, 비활성화 하다 보니, Input이 비활성화 되어야 할 상황임에도 불구하고, 현재 상태와 상관 없이 Input이 활성화되는 경우도 발생하였음.
+- 처음 설계할 당시 Input이 플레이어가 요리 및 움직임에 쓰이는 것으로 기획되어 Player에게 종속 
+- 프로젝트 **후반부에 새로운 Input과 관련된 다양한 기능이 추가로 Input 스크립트를 참조하는 것이 어려워짐**
+- 처음에 Input을 활성화/비활성화 할 때 InputSystem 내InputAction을 직접 활성화, 비활성화하는 구조
+  이에 따라 Input이 비활성화 되어야할 상황에 활성화가 되는 문제 발생
     - InputSystem을 제어하는 메서드를 통일시키고, 외부에서 제어 중인 InputAction을 HashSet에 저장하여 전체적인 InputSystem이 활성화/비활성화 될 때 제어 중인 InputAction에 영향이 가지 않도록 구조를 변경함
     - 하지만 Input의 통제를 더 큰 틀에서, 일관성 있게 Input 통제 상태를 관리할 필요성을 느낌
 
