@@ -1,6 +1,6 @@
 # [Firebase Analytics] 게임 플레이 분석을 위한 외부 모듈 사용
 
-![기술 고민 - 동균-1.png](%5BFirebase%20Analytics%5D%20%E1%84%80%E1%85%A6%E1%84%8B%E1%85%B5%E1%86%B7%20%E1%84%91%E1%85%B3%E1%86%AF%E1%84%85%E1%85%A6%E1%84%8B%E1%85%B5%20%E1%84%87%E1%85%AE%E1%86%AB%E1%84%89%E1%85%A5%E1%86%A8%E1%84%8B%E1%85%B3%E1%86%AF%20%E1%84%8B%E1%85%B1%E1%84%92%E1%85%A1%E1%86%AB%200e00c5d6acae4bb1a26bf6beb77e0e8e/%25EA%25B8%25B0%25EC%2588%25A0_%25EA%25B3%25A0%25EB%25AF%25BC_-_%25EB%258F%2599%25EA%25B7%25A0-1.png)
+![기술 고민 - 동균-1.png](/Detail/09.FirebaseAnalytics/[Firebase%20Analytics]%20게임%20플레이%20분석을%20위한/09.FirebaseAnalytics.png)
 
 ⚠️ **기술 도입 배경**
 
