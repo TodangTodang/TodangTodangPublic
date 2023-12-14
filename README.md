@@ -62,20 +62,20 @@
 # :tea: 사용 기술 스택
 #### 클릭하면 자세한 내용을 확인하실 수 있습니다!🐰
 
-[<img width="500" alt="FSM" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d3f865a9-895c-4b5f-8670-f299e7501d4d">](/Detail/01.FSM/)
-[<img width="500" alt="ObjectPool" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/c75eea79-8351-4106-a8ea-e46e4ec91ddc">](Detail/02.ObjectPool/)
+[<img width="400" alt="FSM" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d3f865a9-895c-4b5f-8670-f299e7501d4d">](/Detail/01.FSM/)
+[<img width="400" alt="ObjectPool" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/c75eea79-8351-4106-a8ea-e46e4ec91ddc">](Detail/02.ObjectPool/)
 
-[<img width="500" alt="UIManager" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d1a2ef09-c2f8-4d09-ba08-e56b9de16c9d">](Detail/03.Singleton&Generic/)
-[<img width="500" alt="MVC" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/2545c1d9-75c5-4b47-bb80-88dd6997d4cf">](Detail/04.MVC/)
+[<img width="400" alt="UIManager" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d1a2ef09-c2f8-4d09-ba08-e56b9de16c9d">](Detail/03.Singleton&Generic/)
+[<img width="400" alt="MVC" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/2545c1d9-75c5-4b47-bb80-88dd6997d4cf">](Detail/04.MVC/)
 
-[<img width="500" alt="InputSystem" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/b1d8394f-c464-4e58-bbf7-e2f49534dedf">](Detail/05.New%20InputSystem/)
-[<img width="500" alt="IMGUI" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/37e34ce8-87dd-4acd-a206-ff0751d34f58">](Detail/06.IMGUI/)
+[<img width="400" alt="InputSystem" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/b1d8394f-c464-4e58-bbf7-e2f49534dedf">](Detail/05.New%20InputSystem/)
+[<img width="400" alt="IMGUI" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/37e34ce8-87dd-4acd-a206-ff0751d34f58">](Detail/06.IMGUI/)
 
-[<img width="500" alt="Observer" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/f6521a15-50ce-4e87-a98d-b172c2dc4e3a">](Detail/07.ObserverPattern/)
-[<img width="500" alt="Interface" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e2c6570f-c9c7-4a74-a390-c8cd1812f55e">](Detail/08.interace/)
+[<img width="400" alt="Observer" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/f6521a15-50ce-4e87-a98d-b172c2dc4e3a">](Detail/07.ObserverPattern/)
+[<img width="400" alt="Interface" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e2c6570f-c9c7-4a74-a390-c8cd1812f55e">](Detail/08.interace/)
 
-[<img width="500" alt="Firebase" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/b278fd4c-cb12-455e-803a-d80b795dcaa3">](/Detail/09.FirebaseAnalytics)
-[<img width="500" alt="ScreenResolution" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/63bf49e1-b3b4-43a4-b3ba-ef70d99cba21">](/Detail/10.ResolutionHanding)
+[<img width="400" alt="Firebase" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/b278fd4c-cb12-455e-803a-d80b795dcaa3">](/Detail/09.FirebaseAnalytics)
+[<img width="400" alt="ScreenResolution" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/63bf49e1-b3b4-43a4-b3ba-ef70d99cba21">](/Detail/10.ResolutionHanding)
 
 <br><br>
 
