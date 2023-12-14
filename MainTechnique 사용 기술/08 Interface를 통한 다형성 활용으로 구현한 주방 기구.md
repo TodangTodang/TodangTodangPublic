@@ -214,6 +214,6 @@
 <br><br>
 
 
-#### [🐰 상세코드 보기 🐰]()
+#### [🐰 상세코드 보기 🐰](https://github.com/szlovelee/TodangCodes-LHJ/tree/main/%EB%8B%A4%EC%96%91%ED%95%9C%20%EC%A3%BC%EB%B0%A9%EA%B8%B0%EA%B5%AC%EB%A5%BC%20%ED%95%98%EB%82%98%EC%9D%98%20%ED%81%B4%EB%9E%98%EC%8A%A4%2C%20%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%A1%9C)
 
 #### [🌙 Main README로 돌아가기 🌙](/README.md)
