@@ -83,6 +83,70 @@
 
 <br><br>
 
+### ⚠️ 문제 1
+- 초기에는 MVC 패턴처럼 View에서 Data를 구독하여, Data가 갱신되면 View도 갱신되는 방식 사용
+- 하지만 Scene이 변경된 후 View를 참조할 수 없는 상태에서 Data가 갱신되는 문제 발생
+
+<br>
+
+### 🛠️ 시도
+- UI 오브젝트가 Destroy 될 때, 구독한 Data 이벤트를 해제하는 방식<br>
+-> 일일이 구독을 해제해야 되는 불편함<br>
+-> View와 Data의 의존성을 줄일 수 없을까?
+
+<br>
+
+### 💡 선택
+- View에서 전달 받은 입력으로 Data를 갱신하는 동작과 Data의 갱신으로 인한 View를 Update하는 동작을 모두 Controller에서 수행하도록 변경<br>
+-> View와 Data의 의존성을 줄이는 MVP 구조를 응용하여 문제를 해결
+
+<br>
+<br>
+
+### ⚠️ 문제 2
+- Inventory에서 다루는 모든 Data에 대한 처리를 InventoryController 내부에서 수행
+- 하나의 Controller에서 모든 Data에 대한 UI 갱신을 처리하면 코드가 매우 길고 복잡해질 것이라고 판단하여,<br>
+UI 클래스에서 Controller를 참조하여 필요한 Data를 가져오도록 구현
+- 하지만 이는 결과적으로 Controller와 View가 상호 참조 관계를 가지며, 의존성이 상당히 높아지게 됨<br>
+-> Tab의 종류가 늘어나면 확장성이 떨어지며 예외 처리 증가로 인한 오류 발생 가능성이 높아질 수 있음
+
+<br>
+
+### 🛠️ 시도
+- InventoryController -> UI_Inventory의 단방향 방식으로 변경<br>
+-> InventoryController 내부에서 다루는 Data 종류가 다양하며, 이를 switch문이나 if문을 사용하여 처리하는 것은 확장성이 떨어진다고 판단<br>
+-> Tab의 종류가 증가해도 쉽게 확장할 수 있는 구조를 만들 수는 없을까?
+
+<br>
+
+### 💡 선택
+- 각 Tab에 대한 Data를 처리하는 Controller를 따로 생성
+-> 해당 Controller들은 기존의 InventoryController를 상속<br>
+- Controller들을 관리하는 InventoryHandler를 추가
+-> Tab이 변경되면 InventoryHandler는 현재 Tab에 대응하는 Controller로 바꾸어 동작 실행
+![GitHub Inventory](https://github.com/j-miiin/TodangTodangCodes/assets/62470991/44b4d882-98ed-4c9c-9aea-922d169abf39)
+```cs
+public class InventoryHandler : MonoBehaviour
+{
+  ...
+
+  private void CallOnChangeTab(Enums.InventoryType inventoryType)
+  {
+      _curSelectedInventoryType = inventoryType;
+      _curController = _inventoryControllers[(int)_curSelectedInventoryType];
+      _curController.RefreshTab();
+  }
+
+  ...
+}
+```
+
+<br>
+
+[🌙 목차로 돌아가기](#crescent_moon-목차)
+
+<br><br>
+
 
 #### [🐰 상세코드 보기 🐰]()
 
