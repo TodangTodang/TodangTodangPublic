@@ -164,6 +164,6 @@
 <br><br>
 
 
-#### [🐰 상세코드 보기 🐰]()
+#### [🐰 상세코드 보기 🐰](https://github.com/szlovelee/TodangCodes-LHJ/tree/main/NewInputSystem%EA%B3%BC%20UI%20%EB%8C%80%EC%9D%91)
 
 #### [🌙 Main README로 돌아가기 🌙](/README.md)
