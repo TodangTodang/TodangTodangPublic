@@ -1,4 +1,6 @@
-# [IMGUI] 빠른 개발과 테스트를 위한 Cheater
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=Data%20Cheater%20with%20IMGUI&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
+
+<br>
 
 ## 결과 미리보기
 
@@ -62,7 +64,7 @@
     
     OnGUI Window에서 적용된 코드
     
-    ```
+    ```cs
     dayChange = EditorGUILayout.Foldout(dayChange, "홈씬 상황변경");
     if(dayChange)
     {
@@ -74,7 +76,7 @@
     
     메소드화 OnGUI
     
-    ```
+    ```cs
     private void Button(string label, Action Applycallback)
     {
         if (GUILayout.Button(label))
@@ -140,4 +142,9 @@
     - #if UNITY_EDITOR의 전처리 구문을 추가하여, Cheater가 빌드에 영향을 주지 않도록 구현
 
 
-## [돌아가기](/)
+<br><br>
+
+
+#### [🐰 상세코드 보기 🐰]()
+
+#### [🌙 Main README로 돌아가기 🌙](/README.md)

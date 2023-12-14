@@ -1,23 +1,28 @@
-# 손님 AI의 Trigger 충돌 중복
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=Customer%20Trigger&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
 
-⚠️ **문제** 
+<br>
 
-Trigger 충돌체가 두 개 존재하였고, 이로 인해 들어올 때 TriggerEnter 한 번 나갈 때 TriggerEnter 한 번으로, Pickup대에 위치했을 때 일어나는 행위가 또 실행된다는 문제
+### ⚠️ 문제
+- Trigger 충돌체가 두 개 존재하였고, 이로 인해 들어올 때 TriggerEnter 한 번 나갈 때 TriggerEnter 한 번으로, Pickup대에 위치했을 때 일어나는 행위가 또 실행되는 문제
 
-**🛠️ 시도**
+<br>
 
+### 🛠️ 시도
 - 잘못된 Trigger를 변경하는 방식
     
      → 어떤 변수가 생겨도 해당 스크립트를 완전하게 통제하기 어려움
-    
 
-💡**선택**
+<br>
 
+### 💡 선택
 - 손님 AI에게 상태머신을 도입하여 손님의 상태에 따라 행위를 통제
     
     → 현재 손님 상태에 따른 각 행위의 예외 상황을 완전하게 통제 가능하고, 특정 상태에서만   알맞는 Trigger를 처리함으로써 중복된 처리 방지
     
 
-### 상세코드 보기
+<br><br>
 
-### [돌아가기](/README.md)
+
+#### [🐰 상세코드 보기 🐰]()
+
+#### [🌙 Main README로 돌아가기 🌙](/README.md)
