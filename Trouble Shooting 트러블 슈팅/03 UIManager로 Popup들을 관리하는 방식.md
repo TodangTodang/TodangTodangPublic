@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=Popup%20with%20UIManager&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=ffd3d3&height=150&section=header&text=Popup%20with%20UIManager&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
 
 <br>
 
