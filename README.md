@@ -1,4 +1,4 @@
-![AppIconwide.png](Image/AppIconwide.png)
+![AppIconwide](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/6b90c88c-1ed1-41ae-9ad3-9a128f4dc87b)
 
 
 <br><br>

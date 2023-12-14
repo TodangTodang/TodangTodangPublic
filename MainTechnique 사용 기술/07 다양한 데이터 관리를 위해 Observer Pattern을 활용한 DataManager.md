@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=DataManager%20with%20Observer%20Pattern&fontSize=60&fontColor=ECFBFF&animation=fadeIn)
+![header](https://capsule-render.vercel.app/api?type=cylinder&color=A1B6FF&height=150&section=header&text=DataManager%20with%20Observer%20Pattern&fontSize=40&fontColor=ECFBFF&animation=fadeIn)
 
 <br>
 
