@@ -82,3 +82,5 @@ private IEnumerator UpdateCameraSize()
 - Galaxy Fold 2152x1536 (해결 후)
 
 ![2152x1536 1.png](/Detail/10.ResolutionHanding/해상도%20대응/2152x1536_1.png)
+
+### [돌아가기](/README.md)
