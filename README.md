@@ -1,5 +1,3 @@
-# 최종 readme
-
 ![AppIconwide.png](Image/AppIconwide.png)
 
 ## 목차
@@ -60,7 +58,7 @@
 
 [[ObserverPattern] 다양한 데이터를 저장하는 DataManager](Detail/07.ObserverPattern/)
 
-[[인터페이스] 다형성을 활용한 주방 기구 설계](Detail/08)
+[[인터페이스] 다형성을 활용한 주방 기구 설계](Detail/08.interace/)
 
 [[Firebase Analytics] 게임 플레이 분석을 위한 외부 모듈 사용](/Detail/09.FirebaseAnalytics)
 
