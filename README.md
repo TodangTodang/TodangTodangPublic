@@ -50,7 +50,7 @@
 
 
 [<img width="400" alt="FSM" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/82091634-c3e5-4332-8210-b3e6427ad7f8">](/MainTechnique%20사용%20기술/01%20플레이어의%20상태%20관리를%20위한%20상태머신.md)
-[<img width="400" alt="ObjectPool" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e487bad4-5732-466d-a243-8fa41a8c9dd0">](/MainTechnique%20사용%20기술/02%20Object%20Pool을%20통한%20객체%20재활용으로%20생성%20오버헤드%20줄이기.md)
+[<img width="400" alt="ObjectPool" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e487bad4-5732-466d-a243-8fa41a8c9dd0">](/MainTechnique%20사용%20기술/02%20Object%20Pool을%20통한%20객체%20재활용으로%20CPU%20오버헤드%20줄이기.md)
 
 [<img width="400" alt="UIManager" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/ef4ca212-75c6-467a-887a-1f408b9d4066">](/MainTechnique%20사용%20기술/03%20Singleton과%20Generic을%20활용한%20UIManager.md)
 [<img width="400" alt="MVC" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d763e7fd-250a-47b8-ba4d-fbea573e3b4f">](/MainTechnique%20사용%20기술/04%20MVC를%20응용한%20확장성%20있는%20Inventory%20구현.md)
