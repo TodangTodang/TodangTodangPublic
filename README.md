@@ -89,20 +89,17 @@
 <br><br>
 
 # :carrot: 기술적 고민과 트러블 슈팅
+#### 클릭하면 자세한 내용을 확인하실 수 있습니다!🍡
 
-**[기술적 고민]**
+### 기술적 고민
 
-[인벤토리 탭 UI의 구현 방식](/Detail/11.InventoryTab)
+[<img width="400" alt="Inventory" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/2b92952d-c8d8-4e0b-a4ed-cc20454290d9">](/Detail/11.InventoryTab)
+[<img width="400" alt="CookStep" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/b2a13a2f-df7a-468f-ba4b-04535c5531d9">](/Detail/12.CheckFoodMethod)
+[<img width="400" alt="Popup" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/6020f70c-5460-4e67-9e83-cfee60eba9f1">](/Detail/13.UIManager)
 
-[요리 과정을 검증하는 방식](/Detail/12.CheckFoodMethod)
-
-[UIManager를 통해 Popup들을 관리하는 방식 ](/Detail/13.UIManager)
-
-**[트러블 슈팅]**
-
-[마우스 좌클릭의 동작 ](/Detail/14.MouseAndButtonConflict)
-
-[손님 AI의 Trigger 충돌 중복 ](/Detail/15.CustomerTriggerConflict)
+### 트러블 슈팅
+[<img width="400" alt="MouseClick" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/1988b6fd-2b20-46d7-a240-afaadb32aeee">](/Detail/14.MouseAndButtonConflict)
+[<img width="400" alt="CustomerTrigger" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/65f6df72-a1ac-4c7d-b8b4-ff708c88d86a">](/Detail/15.CustomerTriggerConflict)
 
 <br><br>
 
