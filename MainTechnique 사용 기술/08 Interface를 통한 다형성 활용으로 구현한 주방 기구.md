@@ -6,7 +6,7 @@
 
 ![interface](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/c9b39bf8-43ad-482d-8613-f5f44108d0f1)
 
-- 서로 다른 기능을 수행하는 주방기구들과 플레이어가 상호작용 해야 하는 상황에서 구조 고민
+- 서로 다른 기능을 수행하는 주방기구들과 플레이어가 상호작용 해야 하는 기능의 구조 고민
 - 상속 구조를 통해서 코드 재사용 및 통일성 있는 메서드 호출
 - 인터페이스로 확장성 고려
 
@@ -164,7 +164,9 @@
 
 ### 💫 상호작용 및 줍기 관련 동작의 확장성 증가
 
-- Player에서 감지된 IInteractable의 Interaction, PickUp, PutDown 메서드를 저장한 후, 저장된 메서드를 Input에 따라 호출하도록 함. 즉, Player는 감지된 대상이 IInteractable 기반의 클래스이기만 하면 별다른 처리 없이 동일한 방식으로 메서드를 호출할 수 있게 됨.
+- Player에서 감지된 IInteractable의 Interaction, PickUp, PutDown 메서드를 델리게이트로 저장
+- 저장된 델리게이트를 Input에 따라 호출하도록 함. 
+- Player는 감지된 대상이 IInteractable 기반의 클래스이기만 하면 별다른 처리 없이 동일한 방식으로 델리게이트를 호출할 수 있게 됨.
 - 따라서 KitchenInteraction 외의 클래스와 상호작용 하는 기능을 추가하는 것이 가능해짐
 
 **관련 코드**

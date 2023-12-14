@@ -41,6 +41,11 @@
     - 게임 중 Hierachy에서 오브젝트를 선택하고, Inspector를 수정 해야 하는 불편함 존재
 - 게임 중 Inspector를 건드리지 않고 조정할 수 있는 방법이 필요
     - Editor 기능 중 유니티의 **IMGUI**를 발견, 이용해보기로 결정
+- UGUI vs IMGUI
+    - IMGUI는 UI를 구현할 때 상당히 단순한 구조를 가지고 있다. 
+    - UGUI는 IMGUI에 비해 구조가 복잡하고, Foldout 기능을 지원하지 않음.
+    - 짧은 시간 내에 많은 부분을 구현해야 했기 때문에 테스트에 사용될 치터를 빠르게 구현할 필요
+    - 빌드 시에는 제외할 수 있도록 구성 되어있어서 release 버전에서는 성능에 영향을 주지 않으므로, IMGUI를 사용해 빠른 테스트를 가능하도록 하였다
 
 ## 💡 **기술 도입으로 얻은 이점**
 
@@ -145,6 +150,6 @@
 <br><br>
 
 
-#### [🐰 상세코드 보기 🐰]()
+#### [🐰 상세코드 보기 🐰](https://github.com/shehdrbs123/NDK_TodangTodang/blob/main/Cheater/Script/Cheater.cs)
 
 #### [🌙 Main README로 돌아가기 🌙](/README.md)

@@ -24,7 +24,7 @@
     
     DataManager는 구독된 클래스들로 부터 JsonData를 받아 저장하는 하는 형태
     
-- 다만 Load과정은 JsonData를 통하고 싶었지만, 기본 데이터를 DataManager에서 관리하고 있어, 각각의 data 자식 클래스에서 참조하는 것은 코드의 결합도를 높이는 결과라고 판단,
+- 다만 Load과정은 JsonData를 통하고 싶었지만, 기본 데이터를 DataManager에서 관리하고 있어, 각각의 data 자식 클래스에서 DataManager를 참조하는 것은 코드의 결합도를 높이는 결과라고 판단,
 - Load과정에서는 DataManager에서 각각의 Data를 직접 반환해주는 것으로 결정
 - 이때 제네릭 메소드를 이용, 코드를 하나로 묶어서 관리할 수 있도록 만들어 코드 수정을 국소적으로 해도 되도록 수정함.
 
@@ -338,6 +338,6 @@ public class MarketDataParam : Param
 <br><br>
 
 
-#### [🐰 상세코드 보기 🐰]()
+#### [🐰 상세코드 보기 🐰](https://github.com/shehdrbs123/NDK_TodangTodang/tree/main/DataManager/Script)
 
 #### [🌙 Main README로 돌아가기 🌙](/README.md)
