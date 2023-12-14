@@ -5,12 +5,11 @@
 
 ## :crescent_moon: 목차
 
-| [🐰 프로젝트 미리 보기 🐰](#rabbit-프로젝트-미리-보기) |
+| [🐇 프로젝트 소개 🐇](#rabbit2-프로젝트-소개) |
 | :---: |
-| [🍡 개요 🍡](#dango-개요) |
-| [🍵 사용 기술 스택 🍵](#tea-사용-기술-스택) |
-| [🥕 기술적 고민과 트러블 슈팅 🥕](#carrot-기술적-고민과-트러블-슈팅) |
-| [🐇 만든 사람들 🐇](#rabbit2-만든-사람들) |
+| [🍡 사용 기술 스택 🍡](#dango-사용-기술-스택) |
+| [🍵 기술적 고민과 트러블 슈팅 🍵](#tea-기술적-고민과-트러블-슈팅) |
+| [🥕 만든 사람들 🥕](#carrot-만든-사람들) |
 
 <br><br>
 
@@ -18,7 +17,7 @@
 
 <br><br>
 
-# :rabbit: 프로젝트 미리 보기
+# :rabbit2: 프로젝트 소개
 
 ### [🌕YouTube](https://www.youtube.com/watch?v=e9uwlPD9TDc)
 
@@ -28,19 +27,6 @@
 
 ### 🐰막내 토끼가 되어 최고의 떡집을 운영해보세요!🍡
 ![게임 미리보기](https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/3d803fcc-ea0d-427a-a893-0ea5d146cc38)
-
-
-<br><br>
-
-[🌙 목차로 돌아가기](#crescent_moon-목차)
-
-<br><br>
-
----
-
-<br><br>
-
-# :dango: 개요
 
 | 게임명 | 토당토당 찰떡쿵 |
 | :---: | :---: |
@@ -59,7 +45,7 @@
 
 <br><br>
 
-# :tea: 사용 기술 스택
+# :dango: 사용 기술 스택
 #### 클릭하면 자세한 내용을 확인하실 수 있습니다!🐰
 
 
@@ -88,8 +74,8 @@
 
 <br><br>
 
-# :carrot: 기술적 고민과 트러블 슈팅
-#### 클릭하면 자세한 내용을 확인하실 수 있습니다!🍡
+# :tea: 기술적 고민과 트러블 슈팅
+#### 클릭하면 자세한 내용을 확인하실 수 있습니다!🐰
 
 ### 기술적 고민
 
@@ -111,22 +97,22 @@
 
 <br><br>
 
-## :rabbit2: 만든 사람들
-<img width="550" alt="동균" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/82ad62eb-133e-4fd9-a348-6c75932cbb18">
-<a href="https://github.com/shehdrbs123"><img width="60" alt="github_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/5d0329da-764d-46cc-95c8-3dcd1ccf7da8"></a>
-<a href="https://blog.naver.com/shehdrbs123"><img width="60" alt="blog_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/f23aa38f-d4b9-4f63-a5e4-db194a1c7252"></a>
+## :carrot: 만든 사람들
+<img width="450" alt="동균" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/82ad62eb-133e-4fd9-a348-6c75932cbb18">
+<a href="https://github.com/shehdrbs123"><img width="60" alt="blog_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e7158b4e-64e8-4d39-af45-76f4b8317d57"></a>
+<a href="https://blog.naver.com/shehdrbs123"><img width="60" alt="github_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/0fd85cf5-3443-40eb-b6ca-5f15a933e045"></a>
 
-<img width="550" alt="정민" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d40d2843-bf1f-4daa-946e-2a7cab38a6af">
-<a href="https://github.com/j-miiin"><img width="60" alt="github_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/5d0329da-764d-46cc-95c8-3dcd1ccf7da8"></a>
-<a href="https://velog.io/@lazypotato"><img width="60" alt="blog_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/f23aa38f-d4b9-4f63-a5e4-db194a1c7252"></a>
+<img width="450" alt="정민" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/d40d2843-bf1f-4daa-946e-2a7cab38a6af">
+<a href="https://github.com/j-miiin"><img width="60" alt="blog_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e7158b4e-64e8-4d39-af45-76f4b8317d57"></a>
+<a href="https://velog.io/@lazypotato"><img width="60" alt="github_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/0fd85cf5-3443-40eb-b6ca-5f15a933e045"></a>
 
-<img width="550" alt="희원" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/0e513fec-ddbb-43b5-8a23-ce08b1dba52f">
-<a href="https://github.com/phw97123"><img width="60" alt="github_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/5d0329da-764d-46cc-95c8-3dcd1ccf7da8"></a>
-<a href="https://hwon-note.tistory.com/"><img width="60" alt="blog_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/f23aa38f-d4b9-4f63-a5e4-db194a1c7252"></a>
+<img width="450" alt="희원" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/0e513fec-ddbb-43b5-8a23-ce08b1dba52f">
+<a href="https://github.com/phw97123"><img width="60" alt="blog_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e7158b4e-64e8-4d39-af45-76f4b8317d57"></a>
+<a href="https://hwon-note.tistory.com/"><img width="60" alt="github_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/0fd85cf5-3443-40eb-b6ca-5f15a933e045"></a>
 
-<img width="550" alt="현지" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/aa285fdb-8c61-4189-91d4-47e405f97a1c">
-<a href="https://github.com/szlovelee"><img width="60" alt="github_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/5d0329da-764d-46cc-95c8-3dcd1ccf7da8"></a>
-<a href="https://szloveleesz.tistory.com/"><img width="60" alt="blog_icon" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/f23aa38f-d4b9-4f63-a5e4-db194a1c7252"></a>
+<img width="450" alt="현지" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/aa285fdb-8c61-4189-91d4-47e405f97a1c">
+<a href="https://github.com/szlovelee"><img width="60" alt="blog_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/e7158b4e-64e8-4d39-af45-76f4b8317d57"></a>
+<a href="https://szloveleesz.tistory.com/"><img width="60" alt="github_icon_btn" src="https://github.com/TodangTodang/TodangTodangPublic/assets/62470991/0fd85cf5-3443-40eb-b6ca-5f15a933e045"></a>
 
 
 <br><br>
