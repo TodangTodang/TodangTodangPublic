@@ -41,14 +41,10 @@ public class PlayerBaseState : IState
 
         if (movementDirection == Vector3.zero)
         {
-            //lastFootstepTime = Time.fixedTime; 
             return;
         }
         float movementSpeed =player.movementSpeed;
-        Vector3 targetPosition = player.transform.position + movementDirection * movementSpeed * Time.fixedDeltaTime;
-        //Vector3 newPosition = Vector3.Slerp(stateMachine.Player.gameObject.transform.position, targetPosition, movementSpeed * Time.fixedDeltaTime);
-        //newPosition.y = 0;
-        
+        Vector3 targetPosition = player.transform.position + movementDirection * movementSpeed * Time.fixedDeltaTime;        
         
         float rotationSpeed = 5.0f;
         Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
@@ -112,11 +108,6 @@ public class PlayerBaseState : IState
             lastFootstepTime = Time.time; 
             return;
         }
-
-        // float rotationSpeed = 5.0f;
-        // Quaternion targetRotation = Quaternion.LookRotation(movementDirection);
-        // Quaternion newRotation = Quaternion.Slerp(stateMachine.Player.gameObject.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-        // player.transform.rotation = newRotation;
 
         if (Time.time - lastFootstepTime > footstepInterval)
         {
